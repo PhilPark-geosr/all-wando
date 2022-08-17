@@ -1,0 +1,751 @@
+ Copyright (C) 1995-2017 - All Rights Reserved
+ University Corporation for Atmospheric Research
+ NCAR Command Language Version 6.4.0
+ The use of this software is governed by a License Agreement.
+ See http://www.ncl.ucar.edu/ for more details.
+
+Variable: f_in
+Type: file
+File path:	/home/wando/mod/WANDO_HYDR_2017120500.nc
+Number of global attributes:	 3
+Number of dimensions:	 4
+Number of variables:	 8
+
+
+Variable: time
+Type: double
+Total Size: 240 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[30]
+Coordinates: 
+Number Of Attributes: 2
+  units :	seconds since 2005-01-01 00:00:00
+  _FillValue :	9.969209968386869e+36
+(0)	407926800
+(1)	407937600
+(2)	407948400
+(3)	407959200
+(4)	407970000
+(5)	407980800
+(6)	407991600
+(7)	408002400
+(8)	408013200
+(9)	408024000
+(10)	408034800
+(11)	408045600
+(12)	408056400
+(13)	408067200
+(14)	408078000
+(15)	408088800
+(16)	408099600
+(17)	408110400
+(18)	408121200
+(19)	408132000
+(20)	408142800
+(21)	408153600
+(22)	408164400
+(23)	408175200
+(24)	408186000
+(25)	408196800
+(26)	408207600
+(27)	408218400
+(28)	408229200
+(29)	408240000
+
+
+Variable: times
+Type: string
+Total Size: 240 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[30]
+Coordinates: 
+Number Of Attributes: 1
+  _FillValue :	9969209968386869046778552952102584320.000000
+(0)	407926800.000000
+(1)	407937600.000000
+(2)	407948400.000000
+(3)	407959200.000000
+(4)	407970000.000000
+(5)	407980800.000000
+(6)	407991600.000000
+(7)	408002400.000000
+(8)	408013200.000000
+(9)	408024000.000000
+(10)	408034800.000000
+(11)	408045600.000000
+(12)	408056400.000000
+(13)	408067200.000000
+(14)	408078000.000000
+(15)	408088800.000000
+(16)	408099600.000000
+(17)	408110400.000000
+(18)	408121200.000000
+(19)	408132000.000000
+(20)	408142800.000000
+(21)	408153600.000000
+(22)	408164400.000000
+(23)	408175200.000000
+(24)	408186000.000000
+(25)	408196800.000000
+(26)	408207600.000000
+(27)	408218400.000000
+(28)	408229200.000000
+(29)	408240000.000000
+
+Variable: date
+Type: float
+Total Size: 720 bytes
+            180 values
+Number of Dimensions: 2
+Dimensions and sizes:	[30] x [6]
+Coordinates: 
+Number Of Attributes: 2
+  _FillValue :	9.96921e+36
+  calendar :	standard
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  lon :	126.5556
+  lat :	34.21666
+  long_name :	sea water temperature
+  standard_name :	sea_water_temperature
+  units :	degC
+  _FillValue :	-9.899999e+15
+  valid_min :	 0
+  valid_max :	50
+  maximum :	25.96049
+  minimum :	2.515
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  lon :	126.5556
+  lat :	34.21666
+  long_name :	sea water salinity
+  standard_name :	sea_water_salinity
+  units :	PSU
+  _FillValue :	-9.899999e+15
+  valid_min :	 0
+  valid_max :	40
+  maximum :	34.99525
+  minimum :	31.85208
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.16111
+  lon :	126.6278
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.16111
+  lon :	126.6278
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.18333
+  lon :	126.85
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.18333
+  lon :	126.85
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.3
+  lon :	126.7667
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.3
+  lon :	126.7667
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.43333
+  lon :	126.8056
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.43333
+  lon :	126.8056
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.36667
+  lon :	126.9945
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.36667
+  lon :	126.9945
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.37778
+  lon :	127.0667
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.37778
+  lon :	127.0667
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.32778
+  lon :	127.0334
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.32778
+  lon :	127.0334
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.35556
+  lon :	126.7611
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.35556
+  lon :	126.7611
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.36667
+  lon :	126.8556
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.36667
+  lon :	126.8556
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.41111
+  lon :	127
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.41111
+  lon :	127
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.34444
+  lon :	126.9834
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.34444
+  lon :	126.9834
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.42222
+  lon :	126.9389
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.42222
+  lon :	126.9389
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.35
+  lon :	126.9389
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.35
+  lon :	126.9389
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.34444
+  lon :	126.6278
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.34444
+  lon :	126.6278
+  _FillValue :	-9.899999e+15
+
+Variable: temp
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	2.515
+  maximum :	25.96049
+  valid_max :	50
+  valid_min :	 0
+  units :	degC
+  standard_name :	sea_water_temperature
+  long_name :	sea water temperature
+  lat :	34.16666
+  lon :	126.4945
+  _FillValue :	-9.899999e+15
+
+Variable: sal
+Type: float
+Total Size: 120 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[time | 30]
+Coordinates: 
+            time: [407894400..408207600]
+Number Of Attributes: 10
+  minimum :	31.85208
+  maximum :	34.99525
+  valid_max :	40
+  valid_min :	 0
+  units :	PSU
+  standard_name :	sea_water_salinity
+  long_name :	sea water salinity
+  lat :	34.16666
+  lon :	126.4945
+  _FillValue :	-9.899999e+15
+fatal:Subscript out of range, error in subscript #0
+fatal:An error occurred reading lat
+fatal:["Execute.c":8640]:Execute: Error occurred at or near line 60 in file /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/code/Timeseries.ncl
+
+

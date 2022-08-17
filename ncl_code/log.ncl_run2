@@ -1,0 +1,104 @@
+ Copyright (C) 1995-2017 - All Rights Reserved
+ University Corporation for Atmospheric Research
+ NCAR Command Language Version 6.4.0
+ The use of this software is governed by a License Agreement.
+ See http://www.ncl.ucar.edu/ for more details.
+
+Variable: f_in
+Type: file
+File path:	/home/wando/mod/WANDO_HYDR_2017120500.nc
+Number of global attributes:	 3
+Number of dimensions:	 4
+Number of variables:	 8
+
+
+Variable: date_str
+Type: string
+Total Size: 240 bytes
+            30 values
+Number of Dimensions: 1
+Dimensions and sizes:	[30]
+Coordinates: 
+(0)	2017-12-05 09:00
+(1)	2017-12-05 12:00
+(2)	2017-12-05 15:00
+(3)	2017-12-05 18:00
+(4)	2017-12-05 21:00
+(5)	2017-12-06 00:00
+(6)	2017-12-06 03:00
+(7)	2017-12-06 06:00
+(8)	2017-12-06 09:00
+(9)	2017-12-06 12:00
+(10)	2017-12-06 15:00
+(11)	2017-12-06 18:00
+(12)	2017-12-06 21:00
+(13)	2017-12-07 00:00
+(14)	2017-12-07 03:00
+(15)	2017-12-07 06:00
+(16)	2017-12-07 09:00
+(17)	2017-12-07 12:00
+(18)	2017-12-07 15:00
+(19)	2017-12-07 18:00
+(20)	2017-12-07 21:00
+(21)	2017-12-08 00:00
+(22)	2017-12-08 03:00
+(23)	2017-12-08 06:00
+(24)	2017-12-08 09:00
+(25)	2017-12-08 12:00
+(26)	2017-12-08 15:00
+(27)	2017-12-08 18:00
+(28)	2017-12-08 21:00
+(29)	2017-12-09 00:00
+
+Variable: temp
+Type: float
+Total Size: 57324960 bytes
+            14331240 values
+Number of Dimensions: 4
+Dimensions and sizes:	[time | 30] x [depth | 11] x [lat | 141] x [lon | 308]
+Coordinates: 
+            time: [407894400..408207600]
+            lat: [33.86111..34.63889]
+            lon: [126.0222..127.7278]
+Number Of Attributes: 8
+  long_name :	sea water temperature
+  standard_name :	sea_water_temperature
+  units :	degC
+  _FillValue :	-9.899999e+15
+  valid_min :	 0
+  valid_max :	50
+  maximum :	25.96049
+  minimum :	2.515
+
+Variable: sal
+Type: float
+Total Size: 57324960 bytes
+            14331240 values
+Number of Dimensions: 4
+Dimensions and sizes:	[time | 30] x [depth | 11] x [lat | 141] x [lon | 308]
+Coordinates: 
+            time: [407894400..408207600]
+            lat: [33.86111..34.63889]
+            lon: [126.0222..127.7278]
+Number Of Attributes: 8
+  long_name :	sea water salinity
+  standard_name :	sea_water_salinity
+  units :	PSU
+  _FillValue :	-9.899999e+15
+  valid_min :	 0
+  valid_max :	40
+  maximum :	34.99525
+  minimum :	31.85208
+
+
+Variable: ndim
+Type: integer
+Total Size: 16 bytes
+            4 values
+Number of Dimensions: 1
+Dimensions and sizes:	[4]
+Coordinates: 
+(0)	30
+(1)	11
+(2)	141
+(3)	308

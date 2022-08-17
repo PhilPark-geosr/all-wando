@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    <head>
+		<meta charset="utf-8" />
+         <title>광주지방기상청</title>
+		<link rel="stylesheet" type="text/css" href="./css/newmain.css">
+		        <script type="text/javascript" src="./js/libs/jquery-2.2.0.min.js"></script>
+		<script type="text/javascript" src="./js/newmain.js"></script>
+        <title>사업소개</title>
+
+		<script>
+	var pos='';
+	function check(po) {
+            pos = po;
+			loadWeathers(pos, viewWeather);
+	}
+
+	function viewWeather() {
+         var curWeather = abalone_position[pos].currWeather;
+		 console.log('intro.html', curWeather);
+
+                var wth = abalone_position[pos].WTH;
+                var dox = abalone_position[pos].DOX;
+
+				var wth1 = abalone_position['노화읍'].WTH;  //관측지점 : 노화도
+                var dox1 = abalone_position['노화읍'].DOX;
+
+				var wth2 = abalone_position['금일읍'].WTH;  //관측지점 : 금일
+                var dox2 = abalone_position['금일읍'].DOX;
+
+				var wth3 = abalone_position['완도읍'].WTH;  //관측지점 : 망남
+                var dox3 = abalone_position['완도읍'].DOX;
+
+				var wth4 = abalone_position['고금면'].WTH;  //관측지점 : 가교
+                var dox4 = abalone_position['고금면'].DOX;
+
+				var wth5 = abalone_position['청산면'].WTH;  //관측지점 : 청산
+                var dox5 = abalone_position['청산면'].DOX;
+
+				var wth6 = abalone_position['소안면'].WTH;  //관측지점 : 백도
+                var dox6 = abalone_position['소안면'].DOX;
+
+				var wth7 = abalone_position['생일면'].WTH;  //관측지점 : 동백
+                var dox7 = abalone_position['생일면'].DOX;
+
+				var wth8 = abalone_position['일정'].WTH;  //관측지점 : 일정
+				
+
+				///// 일정 /////////////////////////////////////
+					if(wth8 == '0')				
+					{	$("#unit15").text('점검중');	}
+					else
+					{
+						$("#wth8").text('' + wth8 + "");
+						$("#unit15").text(' ℃');
+					}
+
+					$("#unit16").text('미설치');  			
+					
+
+					///// 동백 /////////////////////////////////////
+					if(wth7 == '0')				
+					{	$("#unit13").text('점검중');	}
+					else
+					{
+						$("#wth7").text('' + wth7 + "");
+						$("#unit13").text(' ℃');
+					}
+
+					if(dox7)
+					{	$("#dox7").text('' + dox7 + "");
+						$("#unit14").text(' mg/L');
+					}
+					else
+					{
+						$("#unit14").text('점검중');  			
+					}
+
+					///// 백도 /////////////////////////////////////
+					if(wth6 == '0')				
+					{	$("#unit11").text('점검중');	}
+					else
+					{
+						$("#wth6").text('' + wth6 + "");
+						$("#unit11").text(' ℃');
+					}
+
+					if(dox6)
+					{	$("#dox6").text('' + dox6 + "");
+						$("#unit12").text(' mg/L');
+					}
+					else
+					{	$("#unit12").text('점검중');  	}
+
+					///// 청산 /////////////////////////////////////
+					if(wth5 == '0')				
+					{	$("#unit9").text('점검중');	}
+					else
+					{
+						$("#wth5").text('' + wth5 + "");
+						$("#unit9").text(' ℃');
+					}
+
+					if(dox5)
+					{	$("#dox5").text('' + dox5 + "");
+						$("#unit10").text(' mg/L');
+					}
+					else
+					{	$("#unit10").text('점검중');  	}					
+
+					///// 가교 /////////////////////////////////////
+					if(wth4 == '0')				
+					{	$("#unit7").text('점검중');	}
+					else
+					{
+						$("#wth4").text('' + wth4 + "");
+						$("#unit7").text(' ℃');
+					}
+
+					if(dox4)
+					{	$("#dox4").text('' + dox4 + "");
+						$("#unit8").text(' mg/L');
+					}
+					else
+					{	$("#unit8").text('점검중');  	}
+				
+
+					///// 망남 /////////////////////////////////////
+					if(wth3 == '0')				
+					{	$("#unit5").text('점검중');	}
+					else
+					{
+						$("#wth3").text('' + wth3 + "");
+						$("#unit5").text(' ℃');
+					}
+
+					if(dox3)
+					{	$("#dox3").text('' + dox3 + "");
+						$("#unit6").text(' mg/L');
+					}
+					else
+					{	$("#unit6").text('점검중');  	}
+
+					///// 금일 ///////////////////////////////////////
+					if(wth2 == '0')				
+					{	$("#unit3").text('점검중');	}
+					else
+					{
+						$("#wth2").text('' + wth2 + "");
+						$("#unit3").text(' ℃');
+					}
+
+					if(dox2)					//금일 용존산소
+					{	$("#dox2").text('' + dox2 + "");  			
+						$("#unit4").text(' mg/L');
+					}
+					else
+					{	$("#unit4").text('점검중');  	}
+					
+
+					///// 노화도 ////////////////////////////////////
+					if(wth1 == '0')				
+					{	$("#unit1").text('점검중');	}
+					else
+					{
+						$("#wth1").text('' + wth1 + "");
+						$("#unit1").text(' ℃');
+					}
+
+					if(dox1)
+					{	$("#dox1").text('' + dox1 + "");  			
+						$("#unit2").text(' mg/L');
+					}
+					else
+					{	$("#unit2").text('미설치');  	}
+
+                _updateWSD();
+	}
+
+		
+</script>
+		
+    </head>
+    <body>
+		<div class="topMenuFrame2">
+				<div class="topStat2">
+						<div class="topLogo2"><img src=./images/topLogo.png title="광주지방기상청 로고"></div>
+						<div class="topName2"><img src=./images/topName.png title="전복산업 지원을 위한 지역해양기상 융합 서비스"></div>
+						<div class="topMenu2">
+								<a href="./">작업지수 및 날씨</a>
+								<span>|</span> 
+								<a href="./seainfo.html">해상정보</a>
+								<span>|</span> 
+								<a href="./seacast.html">해상예보</a>
+								<span>|</span> 
+								<a href="./pds.html">관측통계정보</a>
+								<span>|</span> 
+								<a href="./intro.html">사업소개</a>
+						</div>
+				</div>
+		</div>
+
+		<div style="text-align:center;background:white; margin-top:92px; margin-bottom:22px;">
+			<img src =./images/topBanner.png style="margin:15px 0 15px 200px;">
+		</div>
+
+<!--<div class="frame01">-->
+<div style="margin-top:0px; width:1100px;">
+
+		<div class="content" style="height:100%;">
+				<div style="position:fixed; top:69px;">
+							<div class="conMenu" style="background:white;">
+									<img src="./images/conMenuBg.jpg">
+									<ul style="border-top:1px solid #cccccc;">
+										<li class="mover" onClick="location.href='./'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+												<span style="color:black; font-size:14px;">작업지수 및 날씨</span><br>
+												<span style="color:#19abaa; font-size:11px;">Work Index & Weather</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./forecast.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./seacast.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상예보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Forecast</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./pds.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">관측통계정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Observation Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover mover__ moverbg" onClick="location.href='./intro.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">사업소개</span><br>
+											<span style="color:#19abaa; font-size:11px;">Introduction of Business</span>
+										</li>
+									</ul>
+							</div>
+
+							<ul style="font-size:13px; background:#fff; line-height:180%; margin-top:510px; padding:3px 3px 0 3px; border:1px solid #cccccc;border-radius:7px;">
+								<li style="margin-bottom:5px; border-radius:5px;background:#98b7c5; color:white; font-weight:bold;"><span style="padding:5px 4px 7px 5px;">관측소별 현재 (수온/용존산소)</span></li>
+
+									<li>
+											<table border=0 width=100%>
+												<tr>
+													<td><span class=pointcurr>가 &nbsp; 교</span></td>
+													<td><span id="wth4"></span><span class=unit id=unit7> ℃</span></td>
+													<td><span id="dox4"></span><span class=unit id=unit8> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>금 &nbsp; 일</span></td>
+													<td><span id="wth2"></span><span class=unit id=unit3> ℃</span></td>
+													<td><span id="dox2"></span><span class=unit id=unit4> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr style="letter-spacing:-2px;">노화도</span> </td>
+													<td><span id="wth1"></span><span class=unit id=unit1> ℃</span></td>
+													<td><span id="dox1"></span><span class=unit id=unit2> 미설치</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>동 &nbsp;  백</span> </td>
+													<td><span id="wth7"></span><span class=unit id=unit13> ℃</span></td>
+													<td><span id="dox7"></span><span class=unit id=unit14> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>망 &nbsp; 남</span> </td>
+													<td><span id="wth3"></span><span class=unit id=unit5> ℃</span></td>
+													<td><span id="dox3"></span><span class=unit id=unit6> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>백 &nbsp; 도</span> </td>
+													<td><span id="wth6"></span><span class=unit id=unit11> ℃</span></td>
+													<td><span id="dox6"></span><span class=unit id=unit12> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>일 &nbsp; 정</span> </td>
+													<td><span id="wth8"></span><span class=unit id=unit15> ℃</span></td>
+													<td><span id="dox8"></span><span class=unit id=unit16> 미설치</span></td>
+												</tr>
+
+												<tr>
+													<td><span class=pointcurr>청 &nbsp; 산</span> </td>
+													<td><span id="wth5"></span><span class=unit id=unit9> ℃</span></td>
+													<td><span id="dox5"></span><span class=unit id=unit10> mg/L</span></td>
+												</tr>
+											</table>
+									</li>		
+							</ul>							
+				</div>
+
+				<div class="conText" style="padding-bottom:0px;border-top:1px solid #999999; ">
+					<ul class=conTextUl style="padding-left:20px;">
+							<li class=conTextTitle style="padding:10px 0 10px 0;">사업 배경</li>
+							<li style="float:right; margin-left:20px;"><img src=./images/conTextImg04.jpg></li>
+							<li class=conTextLeft>- 기상청에서는 기상정보를 지역의 특화 산업과 연계하여 다향한 특성분석을 통해 지역기상융합
+									<br><span class=conTextLeft>서비스를 개발하는 사업을 추진</span></li>
+							<li class=conTextLeft>- 전복 산업은 우리나라 생산량이 전 세계 2위, 전라남도 생산량은 전국 약 98%를 차지하는 지역<br><span class=conTextLeft> 주력산업</span></li>
+							<li class=conTextLeft>- 기상청과 관계기관과의 협업을 통해 전복 산업 지원을 위한 해양기상 융합서비스를 개발하고 있음</li>
+							<li class=conTextLeft>- 지역 기상과 해양 변화 특성을 고려한 전복 맞춤형 해양기상 융합서비스는 지역 연고산업을 육성 지원하여 기상산업육성과 지역 <br><span class=conTextLeft>경제 활성화에 기여</span>
+							<li>
+					</ul>
+
+					<ul class=conTextUl style="background:whitesmoke; padding:20px 0 50px 20px; border-radius:9px;">
+							<li class=conTextTitle style="padding-bottom:10px;">사업 목적</li>
+							<li style="float:left; margin-right:20px;"><img src=./images/conTextImg03.jpg></li>
+							<li class=conTextLeft>- 전남의 전복 양식 생산량은 전국의 98%, 그 중 완도군이 81% 생산</li>
+							<li class=conTextLeft>- 완도군의 전복양식은 다양한 원인(적조, 양식시설의 밀집화 등)으로 생산량 감소 등의 피해가 발생</li>
+							<li class=conTextLeft>- 기후변화에 따른 이상기후에 취약한 전복 산업에 대해 맞춤형 해양기상 융합서비스를  개발·제공</li>
+							<li class=conTextLeft>- 경험적 지배에 의존하던 양식기술을 빅데이터를 활용한 기상기후기술과 융합<li>
+					</ul>
+
+					<ul class=conTextUl style="padding:30px 0 50px 40px; padding-left:20px; border-radius:9px;">
+							<li class=conTextTitle>사업의 필요성</li>
+							<li style="float:right; margin-left:20px;"><img src=./images/conTextImg02.jpg></li>
+							<li class=conTextLeft>- 완도 전복 산업은 최근 기후변화와 해양환경변화 등으로 생산량 감소추세</li>
+							<li class=conTextLeft>- 적조발생, 해양환경변화, 양식시설의 대형화·밀집화 등 다양한 원인으로 전복 산업의 생산성 하락</li>
+							<li class=conTextLeft>- 전복 산업은 기상 및 해양환경 변화에 상대적으로 더 취약하여 상당한 경제적 손실이 발생</li>
+							<li class=conTextLeft>- 전복 산업과 기상기후 빅데이터 기술을 융합하여 경제 활성화의 기회<li>
+							<li class=conTextLeft>- 해조류 생산성 하락에 따른 기술개발 필요한 실정<li>
+					</ul>
+
+
+					<ul class=conTextUl style="background:whitesmoke; padding:20px 0 30px 20px; margin-bottom:50px; border-radius:9px;">
+							<li class=conTextTitle style="padding-bottom:10px;">사업 내용</li>
+							<li style="float:left; margin-right:20px;"><img src=./images/conTextImg01.jpg width=200></li>
+							<li class=conTextLeft>- 최근 기후변화와 해양환경변화 등에 따라 생산량에 영향을 크게 받는 전복 산업의 회복을<br /><span class=conTextLeft>  위해 완도 주변해역 해양, 기상, 환경 파악</span></li>
+							<li class=conTextLeft>- 관측된 해양기상자료와 전복 생산자료/ 전문가 자문회의/ 설문조사를  통한 전복/해조류 <br /><span class=conTextLeft>작업지수 산정</span></li>
+							<li class=conTextLeft>- 전복 산업 맞춤형  융합 해양기후정보 서비스 개발<li>
+							<li class=conTextLeft>- 설문조사를 통해 어민들의 의견을 적극적으로 수렴<li>
+							<li class=conTextLeft>- 선정한 요소에 각각 가중치를 부여하여 입식/양성/수확 시기   작업지수를 도출</li>
+					</ul>
+				</div>
+				
+		</div>
+</div>
+
+	<div class=frame06>
+		<div class=frame06_box style="color:#888888; padding-bottom:5px;">
+			<div style="height:48px;">
+				<div style="float:left; border-bottom:1px solid #cccccc; padding-top:7px; padding-bottom:5px;">
+					<img src=./images/addr.jpg title="광주지방기상청 로고">
+				</div>
+				<div style="float:left; letter-spacing:1px; line-height:150%; border-bottom:1px solid #cccccc; padding:8px 0 3px 20px; width:384px; font-size:11px; font-weight:normal;">
+						우. 61113 전라남도 광주광역시 북구 서암대로 71 광주지방기상청<br>
+						Copyright&copy; 2017 KMA. All Rights RESERVED
+				</div>
+				<div style="float:right; background:white; margin-top:5px; padding-top:5px; width:455px; border:1px solid #cccccc; text-align:center">
+						<span><a href="http://www.wando.go.kr/" target=_blank><img src=./images/wandologo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.nifs.go.kr/" target=_blank><img src=./images/nifslogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.jnu.ac.kr/" target=_blank><img src=./images/jnulogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.khoa.go.kr/" target=_blank><img src=./images/khoalogo2.png height=22></a></span>
+				</div>
+			</div>
+
+			<div style="margin-left:3px;">
+					<span style="color:#888888; font-weight:bold; font-size:12px; padding-right:15px">[ 지역 해양기상 융합 서비스 ]</span>
+					<a href="./" style="font-size:12px; color:#888888; text-decoration:none;">작업지수 및 날씨 </a>
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seainfo.html" style="font-size:12px; color:#888888; text-decoration:none;">해상정보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seacast" style="font-size:12px; color:#888888; text-decoration:none;">해상예보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./pds.html" style="font-size:12px; color:#888888; text-decoration:none;">관측통계정보 </a>					
+					<span style="padding:0 7px 0 7px; font-size:7px; color:#888888; font-size:7px;"> | </span>					
+					<a href="./intro.html" style="font-size:12px; color:#888888; text-decoration:none;">사업소개</a>
+			</div>
+
+		</div>
+	</div>
+
+
+		
+           
+    </body>
+</html>
+<script>
+	loadWeathers(null, function(result) {
+        check('고금면');
+        //_openAreaForecast('고금면');    
+    });
+</script>
+

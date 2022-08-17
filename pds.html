@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <title>광주지방기상청</title>
+        <link rel="stylesheet" type="text/css" href="./css/newmain.css">
+        <script type="text/javascript" src="./js/libs/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="./js/main_201707-01.js"></script>
+		<script type="text/javascript" src="./js/newmain.js"></script>
+		<script type="text/javascript" src="./js/pdsjs.js"></script>
+        <title>관측 · 통계정보</title>
+    </head>
+    <body>
+		<div class="topMenuFrame2">
+				<div class="topStat2">
+						<div class="topLogo2"><img src=./images/topLogo.png title="광주지방기상청 로고"></div>
+						<div class="topName2"><img src=./images/topName.png title="전복산업 지원을 위한 지역해양기상 융합 서비스"></div>
+						<div class="topMenu2">
+								<a href="./">작업지수 및 날씨</a>
+								<span>|</span> 
+								<a href="./seainfo.html">해상정보</a>
+								<span>|</span> 
+								<a href="./seacast.html">해상예보</a>
+								<span>|</span> 
+								<a href="./pds.html">관측통계정보</a>
+								<span>|</span> 
+								<a href="./intro.html">사업소개</a>
+						</div>
+				</div>
+		</div>
+
+		<div style="text-align:center;background:white; margin-top:93px; margin-bottom:21px;">
+			<img src =./images/topBanner.png style="margin:15px 0 15px 200px;">
+		</div>
+
+<!--<div class="frame01" style="border:1px solid red;"> -->
+<div style="margin-top:0px; width:1100px;">
+
+		<div class="content" style="height:100%; min-height:650px;">
+				<div style="position:fixed; top:69px;">
+							<div class="conMenu" style="background:white;">
+									<img src="./images/conMenuBg.jpg">
+									<ul style="border-top:1px solid #cccccc;">
+										<li class="mover" onClick="location.href='./'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+												<span style="color:black; font-size:14px;">작업지수 및 날씨</span><br>
+												<span style="color:#19abaa; font-size:11px;">Work Index & Weather</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./seainfo.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./seacast.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상예보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Forecast</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover mover__ moverbg" onClick="location.href='./pds.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">관측통계정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Observation Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./intro.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">사업소개</span><br>
+											<span style="color:#19abaa; font-size:11px;">Introduction of Business</span>
+										</li>
+									</ul>
+							</div>
+
+							<ul style="font-size:13px; background:#fff; line-height:180%; margin-top:510px; padding:3px 3px 0 3px; border:1px solid #cccccc;border-radius:7px;">
+								<li style="margin-bottom:5px; border-radius:5px;background:#98b7c5; color:white; font-weight:bold;"><span style="padding:5px 4px 7px 5px;">관측소별 현재 (수온/용존산소)</span></li>
+
+									<li>
+											<table border=0 width=100%>
+												<tr>
+													<td><span class=pointcurr>가 &nbsp; 교</span></td>
+													<td><span id="wth4"></span><span class=unit id=unit7> ℃</span></td>
+													<td><span id="dox4"></span><span class=unit id=unit8> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>금 &nbsp; 일</span></td>
+													<td><span id="wth2"></span><span class=unit id=unit3> ℃</span></td>
+													<td><span id="dox2"></span><span class=unit id=unit4> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr style="letter-spacing:-2px;">노화도</span> </td>
+													<td><span id="wth1"></span><span class=unit id=unit1> ℃</span></td>
+													<td><span id="dox1"></span><span class=unit id=unit2> 미설치</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>동 &nbsp;  백</span> </td>
+													<td><span id="wth7"></span><span class=unit id=unit13> ℃</span></td>
+													<td><span id="dox7"></span><span class=unit id=unit14> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>망 &nbsp; 남</span> </td>
+													<td><span id="wth3"></span><span class=unit id=unit5> ℃</span></td>
+													<td><span id="dox3"></span><span class=unit id=unit6> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>백 &nbsp; 도</span> </td>
+													<td><span id="wth6"></span><span class=unit id=unit11> ℃</span></td>
+													<td><span id="dox6"></span><span class=unit id=unit12> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>일 &nbsp; 정</span> </td>
+													<td><span id="wth8"></span><span class=unit id=unit15> ℃</span></td>
+													<td><span id="dox8"></span><span class=unit id=unit16> 미설치</span></td>
+												</tr>
+
+												<tr>
+													<td><span class=pointcurr>청 &nbsp; 산</span> </td>
+													<td><span id="wth5"></span><span class=unit id=unit9> ℃</span></td>
+													<td><span id="dox5"></span><span class=unit id=unit10> mg/L</span></td>
+												</tr>
+											</table>
+									</li>		
+							</ul>						
+				</div>
+
+				<div class="conText">
+				        <div class="main">
+           
+						<div id="contents" class="contents" style="padding-bottom:50px;">
+							<div id="pNavi1">
+										<div style="background:white; margin:0px 0px 35px 0; padding:1px 0 1px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;"> 
+												<span style='float:left; margin-left:0px; margin-right:20px;  font-weight:bold; font-size:15px; color:black;'>관측통계정보</span> 
+												<span onMouseOver="document.getElementById('pNavi1').style.display='block'; document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ pdsButton_sel__">국립수산과학원</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='block';document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ ">기상청</span>
+												<span onMouseOver="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='block';document.getElementById('bNavi4').style.display='none';" class="pdsButton__ "> 해양환경관리공단</span>
+												<span onMouseOver="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='block';" class="pdsButton__ ">한국해양수산개발원</span>
+										</div>
+<!--
+										<li class=conTextTitle style="border-bottom:1px solid #cccccc;border-right:1px solid #cccccc;"><img src="./images/titleArrow.jpg" width=15> 관측통계정보 > 국립수산과학원 </li>
+										-->
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※  실시간 어장정보 시스템</li>
+								
+										<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th >기타</th>
+											</tr>
+											<tr>
+												<td>진도 회동</td>
+												<!-- <td><span id="국립수산_실시간_진도 회동_표층수온.xlsx" class="download_file">표층수온</span></td>-->
+												<td onClick="javascript:pds('국립수산_실시간_진도_회동_표층수온','600');" style="cursor:pointer;">표층수온</td>
+												<td>2005-10-07</td>
+												<td></td>
+
+											</tr>
+											<tr>
+												<td>진도 전두</td>
+												<td><span class="download_file">표층수온</span></td>
+												<td>2015-12-11</td>
+												<td>x</td>
+											</tr>
+											<tr>
+												<td>해남 화산</td>
+												<td><span class="download_file">표/중/저 수온</span></td>
+												<td>2015-12-11</td>
+												<td>x</td>
+											</tr>
+											<tr>
+												<td>완도 노화도</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_노화도_표층수온','600');" style="cursor:pointer;">표층수온</td>
+												<td>2008-07-24</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도 백도</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_백도_표층수온','600');" style="cursor:pointer;">표/중 수온</td>
+												<td>2014-12-30</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도 청산</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_청산도_표층수온','600');" style="cursor:pointer;">표층수온</td>
+												<td>2005-10-25</td>
+												<td>x</td>
+											</tr>
+											<tr>
+												<td>완도 망남</td>
+												<td><span class="download_file">표/중 수온</span></td>
+												<td>2016-03-29</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도 가교</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_가교_표층수온','600');" style="cursor:pointer;">표/중 수온</td>
+												<td>2014-12-30</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도 동백</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_동백_표층수온','600');" style="cursor:pointer;">표/중 수온</td>
+												<td>2014-12-30</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도 금일</td>
+												<td onClick="javascript:pds('국립수산_실시간_완도_금일도_표층수온','600');" style="cursor:pointer;">표층수온</td>
+												<td>2009-04-16</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>장흥 회진</td>
+												<td><span class="download_file">표층수온</span></td>
+												<td>2015-12-11</td>
+												<td>x</td>
+											</tr>
+										</tbody>
+										</table>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※  어장환경모니터링</li>
+									<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th>기타</th>
+											</tr>
+
+											<tr>
+
+												<td>진도1</td>
+												<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+												<td>2011(짝수 격월)</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>진도2</td>
+												<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+												<td>2015(짝수 격월)</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>진도3</td>
+												<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+												<td>2011(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도4</td>
+												<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+												<td>2011(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도1</td>
+												<td> 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('국립수산_어장환경_완도01_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도2</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도02_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2013(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도3</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도03_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도4</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도04_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도5</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도05_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도6</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도06_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도7</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도07_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도8</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도08_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도9</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도09_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2010(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도10</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도10_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2013(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도11</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도11_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2009(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도12</td>
+												<td>
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+														<span onClick="javascript:pds('국립수산_어장환경_완도12_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>2011(짝수 격월)</td>
+												<td>
+						　
+												</td>
+											</tr>
+									</tbody>
+									</table>
+
+									<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※  정선관측자료</li>
+									<table class="pds_table">
+										<tbody>
+										<tr>
+											<th style="width:200px;" >장소</th>
+											<th style="width:450px;" >자료</th>
+											<th style="width:150px;" >관측(설치)일자</th>
+											<th>기타</th>
+										</tr>
+										<tr>
+
+											<td>203-00</td>
+											<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+											<td>10년 이상 보유</td>
+											<td>x</td>
+										</tr>
+										<tr>
+											<td>203-01</td>
+											<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+											<td>10년 이상 보유</td>
+											<td>x</td>
+										</tr>
+										<tr>
+											<td>312-02</td>
+											<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+											<td>10년 이상 보유</td>
+											<td>x</td>
+										</tr>
+										<tr>
+											<td>312-03</td>
+											<td><span class="download_file">표층수온</span>, <span class="download_file">저층수온</span>, <span class="download_file">표층염분</span>, <span class="download_file">저층염분</span>, <span class="download_file">표층용존산소</span>, <span class="download_file">저층용존산소</span></td>
+											<td>10년 이상 보유</td>
+											<td>x</td>
+										</tr>
+									</tbody>
+									</table>
+
+									<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 연안정지해양조사</li>
+									<table class="pds_table">
+												<tbody>
+												<tr>
+													<th style="width:200px;" >장소</th>
+													<th style="width:450px;" >자료</th>
+													<th style="width:150px;" >관측(설치)일자</th>
+													<th>기타</th>
+												</tr>
+
+												<tr>
+													<td>당사도</td>
+													<td><span class="download_file">수온,기온, 염분 등</span></td>
+													<td>1933-02-01</td>
+													<td>x</td>
+												</tr>
+												<tr>
+													<td>완도</td>
+													<td><span class="download_file">수온,기온, 염분 등</span></td>
+													<td>1967-09-01</td>
+													<td>x</td>
+												</tr>
+									</tbody>
+									</table>
+							</div>
+
+
+							<div id="pNavi2" style="display:none">
+
+										<div style="background:white; margin:0px 0px 35px 0; padding:1px 0 1px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;"> 
+												<span style='float:left; margin-left:0px; margin-right:20px;  font-weight:bold; font-size:16px; color:black;'>관측통계정보</span> 
+												<span onMouseOver="document.getElementById('pNavi1').style.display='block'; document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ ">국립수산과학원</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='block';document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ pdsButton_sel__">기상청</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='block';document.getElementById('pNavi4').style.display='none';"  class="pdsButton__ "> 해양환경관리공단</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='block';" class="pdsButton__ ">한국해양수산개발원</span>
+										</div>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 기상대</li>
+										<table class="pds_table">
+													<tbody>
+													<tr>
+														<th style="width:200px;" >장소</th>
+														<th style="width:450px;" >자료</th>
+														<th style="width:150px;" >관측(설치)일자</th>
+														<th>기타</th>
+													</tr>
+
+
+													<tr>
+													   
+														<td >완도</td>
+														<td>
+															<span onClick="javascript:pds('기상청_AWS_완도기상대_평균기온','600');" style="cursor:pointer;">기온</span>,
+															<span onClick="javascript:pds('기상청_AWS_완도기상대_강수량','600');" style="cursor:pointer;">강수량</span>,
+															<span onClick="javascript:pds('기상청_AWS_완도기상대_평균풍속','600');" style="cursor:pointer;">풍속</span>
+															</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+										</tbody>
+										</table>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ AWS</li>
+										<table class="pds_table">
+													<tbody>
+													<tr>
+														<th style="width:200px;" >장소</th>
+														<th style="width:450px;" >자료</th>
+														<th style="width:150px;" >관측(설치)일자</th>
+														<th>기타</th>
+													</tr>
+													<tr>
+														<td>완도</td>
+														<td>
+																<span onClick="javascript:pds('기상청_AWS_완도읍_평균기온','600');" style="cursor:pointer;">기온</span>,
+																<span onClick="javascript:pds('기상청_AWS_완도읍_강수량','600');" style="cursor:pointer;">강수량</span>,
+																<span onClick="javascript:pds('기상청_AWS_완도읍_평균풍속','600');" style="cursor:pointer;">풍속</span>
+														</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>보길도</td>
+														 <td>
+																<span onClick="javascript:pds('기상청_AWS_보길도_평균기온','600');" style="cursor:pointer;">기온</span>,
+																<span onClick="javascript:pds('기상청_AWS_보길도_강수량','600');" style="cursor:pointer;">강수량</span>,
+																<span onClick="javascript:pds('기상청_AWS_보길도_평균풍속','600');" style="cursor:pointer;">풍속</span>
+														</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>신지도</td>
+														<td>
+																<span onClick="javascript:pds('기상청_AWS_신지도_평균기온','600');" style="cursor:pointer;">기온</span>,
+																<span onClick="javascript:pds('기상청_AWS_신지도_강수량','600');" style="cursor:pointer;">강수량</span>,
+																<span onClick="javascript:pds('기상청_AWS_신지도_평균풍속','600');" style="cursor:pointer;">풍속</span>
+														</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>여서도</td>
+														<td>
+																<span onClick="javascript:pds('기상청_AWS_여서도_평균기온','600');" style="cursor:pointer;">기온</span>,
+																<span onClick="javascript:pds('기상청_AWS_여서도_강수량','600');" style="cursor:pointer;">강수량</span>,
+																<span onClick="javascript:pds('기상청_AWS_여서도_평균풍속','600');" style="cursor:pointer;">풍속</span>
+														</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>금일도</td>
+														<td>
+																<span class="download_file">기온</span>,
+																<span class="download_file">강수량</span>,
+																<span class="download_file">풍속</span></td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>청산도</td>
+														<td>
+																<span id="기상청_AWS_청산도_평균기온.xlsx" class="download_file">기온</span>,
+																<span id="기상청_AWS_청산도_강수량.xlsx" class="download_file">강수량</span>,
+																<span id="기상청_AWS_청산도_평균풍속.xlsx" class="download_file">풍속</span>
+														</td>
+														<td>10년 이상 자료</td>
+														<td>
+								　
+														</td>
+													</tr>
+										</tbody>
+										</table>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 파고부이</li>
+										<table class="pds_table">
+													<tbody>
+													<tr>
+														<th style="width:200px;" >장소</th>
+														<th style="width:450px;" >자료</th>
+														<th style="width:150px;" >관측(설치)일자</th>
+														<th>기타</th>
+													</tr>
+
+													<tr>
+														<td>노화도</td>
+														<td>
+																<span onClick="javascript:pds('기상청_파고부이_노화도_평균기온','600');" style="cursor:pointer;">수온</span>, 
+																<span class="download_file">최대파고</span>, 
+																<span class="download_file">유의파고</span>, 
+																<span class="download_file">평균파고</span>, 
+																<span class="download_file">파주기</span>
+																</td>
+														<td>2012-2015</td>
+														<td>
+								　
+														</td>
+													</tr>
+													<tr>
+														<td>청산도</td>
+														<td>
+																<span onClick="javascript:pds('기상청_파고부이_청산도_평균기온','600');" style="cursor:pointer;">수온</span>, 
+																<span class="download_file">최대파고</span>, 
+																<span class="download_file">유의파고</span>, 
+																<span class="download_file">평균파고</span>, 
+																<span class="download_file">파주기</span>
+															</td>
+														<td>2012-2015</td>
+														<td>
+								　
+														</td>
+													</tr>
+
+										</tbody>
+										</table>
+							</div>
+
+							<div id="pNavi3" style="display:none">
+
+										<div style="background:white; margin:0px 0px 35px 0; padding:1px 0 1px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;"> 
+												<span style='float:left; margin-left:0px; margin-right:20px;  font-weight:bold; font-size:16px; color:black;'>관측통계정보</span> 
+												<span onMouseOver="document.getElementById('pNavi1').style.display='block'; document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ ">국립수산과학원</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='block';document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__">기상청</span>
+												<span onMouseOver="document.getElementById('bNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='block';document.getElementById('pNavi4').style.display='none';"  class="pdsButton__ pdsButton_sel__"> 해양환경관리공단</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='block';" class="pdsButton__ ">한국해양수산개발원</span>
+										</div>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 관측자료</li>
+										<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th>기타</th>
+											</tr>
+
+
+											<tr>
+												<td>완도연안 H1</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안H1_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안1</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안1_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안2</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안2_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안3</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안3_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안4</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안4_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안5</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_완도연안5_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안1</td>
+												<td>
+												
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안1_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안2</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안2_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안3</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안3_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안4</td>
+												<td>
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_표층수온','600');" style="cursor:pointer;">표층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_저층수온','600');" style="cursor:pointer;">저층수온</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_표층염분','600');" style="cursor:pointer;">표층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_저층염분','600');" style="cursor:pointer;">저층염분</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_표층용존산소','600');" style="cursor:pointer;">표층용존산소</span>, 
+													<span onClick="javascript:pds('해양환경_해양환경측정망_진도연안4_저층용존산소','600');" style="cursor:pointer;">저층용존산소</span>
+												</td>
+												<td>10년이상자료</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안 H1</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안1</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안2</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안3</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안4</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>완도연안5</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안1</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안2</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안3</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+											<tr>
+												<td>진도연안4</td>
+												<td><span class="download_file">수심별 수온/염분</span></td>
+												<td>2011년 이후</td>
+												<td>
+						　
+												</td>
+											</tr>
+									</tbody>
+									</table>
+							</div>
+
+
+							<div id="pNavi4" style="display:none">
+
+										<div style="background:white; margin:0px 0px 35px 0; padding:1px 0 1px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;"> 
+												<span style='float:left; margin-left:0px; margin-right:20px;  font-weight:bold; font-size:16px; color:black;'>관측통계정보</span> 
+												<span onMouseOver="document.getElementById('pNavi1').style.display='block'; document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__ ">국립수산과학원</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='block';document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='none';" class="pdsButton__">기상청</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='block';document.getElementById('pNavi4').style.display='none';"  class="pdsButton__ "> 해양환경관리공단</span>
+												<span onMouseOver="document.getElementById('pNavi1').style.display='none';  document.getElementById('pNavi2').style.display='none'; document.getElementById('pNavi3').style.display='none'; document.getElementById('pNavi4').style.display='block';" class="pdsButton__ pdsButton_sel__">한국해양수산개발원</span>
+										</div>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 전복</li>
+										<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th>기타</th>
+											</tr>
+
+											<tr>
+
+												<td>완도, 진도</td>
+												<td><span onClick="javascript:pds('해양수산개발원_전복생산량','600');" style="cursor:pointer;">생산량</span></td>
+												<td>매월자료제공</td>
+												<td>
+						　
+												</td>
+											</tr>
+										</tbody>
+										</table>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 해조류(미역, 다시마)</li>
+										<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th>기타</th>
+											</tr>
+											<tr>
+												<td>완도, 진도</td>
+												<td ><span class="download_file">출하량, 무게 등등</span></td>
+												<td>매월자료제공</td>
+												<td>x</td>
+											</tr>
+
+										</tbody>
+										</table>
+
+										<li style="margin-left:10px; margin-top:20px; font-size:16px;font-weight:bold;">※ 치패</li>
+										<table class="pds_table">
+											<tbody>
+											<tr>
+												<th style="width:200px;" >장소</th>
+												<th style="width:450px;" >자료</th>
+												<th style="width:150px;" >관측(설치)일자</th>
+												<th>기타</th>
+											</tr>
+
+											<tr>
+												
+												<td>완도, 진도</td>
+												<td ><span class="download_file">출하량, 무게 등등</span></td>
+												<td>매월자료제공</td>
+												<td>x</td>
+											</tr>
+											</tbody>
+										</table>
+
+							</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	
+</div>
+	
+
+	<div class=frame06>
+		<div class=frame06_box style="color:#888888; padding-bottom:5px;">
+			<div style="height:48px;">
+				<div style="float:left; border-bottom:1px solid #cccccc; padding-top:7px; padding-bottom:5px;">
+					<img src=./images/addr.jpg title="광주지방기상청 로고">
+				</div>
+				<div style="float:left; letter-spacing:1px; line-height:150%; border-bottom:1px solid #cccccc; padding:8px 0 3px 20px; width:384px; font-size:11px; font-weight:normal;">
+						우. 61113 전라남도 광주광역시 북구 서암대로 71 광주지방기상청<br>
+						Copyright&copy; 2017 KMA. All Rights RESERVED
+				</div>
+				<div style="float:right; background:white; margin-top:5px; padding-top:5px; width:455px; border:1px solid #cccccc; text-align:center">
+						<span><a href="http://www.wando.go.kr/" target=_blank><img src=./images/wandologo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.nifs.go.kr/" target=_blank><img src=./images/nifslogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.jnu.ac.kr/" target=_blank><img src=./images/jnulogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.khoa.go.kr/" target=_blank><img src=./images/khoalogo2.png height=22></a></span>
+				</div>
+			</div>
+
+			<div style="margin-left:3px;">
+					<span style="color:#888888; font-weight:bold; font-size:12px; padding-right:15px">[ 지역 해양기상 융합 서비스 ]</span>
+					<a href="./" style="font-size:12px; color:#888888; text-decoration:none;">작업지수 및 날씨 </a>
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seainfo.html" style="font-size:12px; color:#888888; text-decoration:none;">해상정보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seacast" style="font-size:12px; color:#888888; text-decoration:none;">해상예보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./pds.html" style="font-size:12px; color:#888888; text-decoration:none;">관측통계정보 </a>					
+					<span style="padding:0 7px 0 7px; font-size:7px; color:#888888; font-size:7px;"> | </span>					
+					<a href="./intro.html" style="font-size:12px; color:#888888; text-decoration:none;">사업소개</a>
+			</div>
+
+		</div>
+	</div>
+
+		
+    </body>
+</html>
+
+<script>
+	loadWeathers(null, function(result) {
+        check('고금면');
+    });
+		function viewWeather() {
+         var curWeather = abalone_position[pos].currWeather;
+		 console.log('intro.html', curWeather);
+
+                var wth = abalone_position[pos].WTH;
+                var dox = abalone_position[pos].DOX;
+
+				var wth1 = abalone_position['노화읍'].WTH;  //관측지점 : 노화도
+                var dox1 = abalone_position['노화읍'].DOX;
+
+				var wth2 = abalone_position['금일읍'].WTH;  //관측지점 : 금일
+                var dox2 = abalone_position['금일읍'].DOX;
+
+				var wth3 = abalone_position['완도읍'].WTH;  //관측지점 : 망남
+                var dox3 = abalone_position['완도읍'].DOX;
+
+				var wth4 = abalone_position['고금면'].WTH;  //관측지점 : 가교
+                var dox4 = abalone_position['고금면'].DOX;
+
+				var wth5 = abalone_position['청산면'].WTH;  //관측지점 : 청산
+                var dox5 = abalone_position['청산면'].DOX;
+
+				var wth6 = abalone_position['소안면'].WTH;  //관측지점 : 백도
+                var dox6 = abalone_position['소안면'].DOX;
+
+				var wth7 = abalone_position['생일면'].WTH;  //관측지점 : 동백
+                var dox7 = abalone_position['생일면'].DOX;
+
+				var wth8 = abalone_position['일정'].WTH;  //관측지점 : 일정
+				
+
+				///// 일정 /////////////////////////////////////
+					if(wth8 == '0')				
+					{	$("#unit15").text('점검중');	}
+					else
+					{
+						$("#wth8").text('' + wth8 + "");
+						$("#unit15").text(' ℃');
+					}
+
+					$("#unit16").text('미설치');  			
+					
+
+					///// 동백 /////////////////////////////////////
+					if(wth7 == '0')				
+					{	$("#unit13").text('점검중');	}
+					else
+					{
+						$("#wth7").text('' + wth7 + "");
+						$("#unit13").text(' ℃');
+					}
+
+					if(dox7)
+					{	$("#dox7").text('' + dox7 + "");
+						$("#unit14").text(' mg/L');
+					}
+					else
+					{
+						$("#unit14").text('점검중');  			
+					}
+
+					///// 백도 /////////////////////////////////////
+					if(wth6 == '0')				
+					{	$("#unit11").text('점검중');	}
+					else
+					{
+						$("#wth6").text('' + wth6 + "");
+						$("#unit11").text(' ℃');
+					}
+
+					if(dox6)
+					{	$("#dox6").text('' + dox6 + "");
+						$("#unit12").text(' mg/L');
+					}
+					else
+					{	$("#unit12").text('점검중');  	}
+
+					///// 청산 /////////////////////////////////////
+					if(wth5 == '0')				
+					{	$("#unit9").text('점검중');	}
+					else
+					{
+						$("#wth5").text('' + wth5 + "");
+						$("#unit9").text(' ℃');
+					}
+
+					if(dox5)
+					{	$("#dox5").text('' + dox5 + "");
+						$("#unit10").text(' mg/L');
+					}
+					else
+					{	$("#unit10").text('점검중');  	}					
+
+					///// 가교 /////////////////////////////////////
+					if(wth4 == '0')				
+					{	$("#unit7").text('점검중');	}
+					else
+					{
+						$("#wth4").text('' + wth4 + "");
+						$("#unit7").text(' ℃');
+					}
+
+					if(dox4)
+					{	$("#dox4").text('' + dox4 + "");
+						$("#unit8").text(' mg/L');
+					}
+					else
+					{	$("#unit8").text('점검중');  	}
+				
+
+					///// 망남 /////////////////////////////////////
+					if(wth3 == '0')				
+					{	$("#unit5").text('점검중');	}
+					else
+					{
+						$("#wth3").text('' + wth3 + "");
+						$("#unit5").text(' ℃');
+					}
+
+					if(dox3)
+					{	$("#dox3").text('' + dox3 + "");
+						$("#unit6").text(' mg/L');
+					}
+					else
+					{	$("#unit6").text('점검중');  	}
+
+					///// 금일 ///////////////////////////////////////
+					if(wth2 == '0')				
+					{	$("#unit3").text('점검중');	}
+					else
+					{
+						$("#wth2").text('' + wth2 + "");
+						$("#unit3").text(' ℃');
+					}
+
+					if(dox2)					//금일 용존산소
+					{	$("#dox2").text('' + dox2 + "");  			
+						$("#unit4").text(' mg/L');
+					}
+					else
+					{	$("#unit4").text('점검중');  	}
+					
+
+					///// 노화도 ////////////////////////////////////
+					if(wth1 == '0')				
+					{	$("#unit1").text('점검중');	}
+					else
+					{
+						$("#wth1").text('' + wth1 + "");
+						$("#unit1").text(' ℃');
+					}
+
+					if(dox1)
+					{	$("#dox1").text('' + dox1 + "");  			
+						$("#unit2").text(' mg/L');
+					}
+					else
+					{	$("#unit2").text('미설치');  	}
+
+                _updateWSD();
+	}
+	viewWeather();
+</script>

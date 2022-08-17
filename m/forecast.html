@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html5/loose.dtd">
+
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes,user-scalable=1, target-densitydpi=medium-dpi">
+        <title>기상청 전복사업</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/newmain.css">
+        <script type="text/javascript" src="../js/libs/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="../js/libs/jquery.xdomain.js"></script>
+        <script type="text/javascript" src="../js/newMobileMain.js"></script>
+        <script type="text/javascript" src="../js/newMobileChart.js"></script>
+
+		
+		<!-- swipe  
+		<link rel='stylesheet' href='/css/swiper.min.css'>
+		<script src='/js/swiper.min.js'></script>
+		-->
+
+		
+
+    </head>
+	<style>
+		/* 배너사이즈와 위치 
+		#s_banner_wrap {width:100%;  position: relative; margin:10px 0}
+		.banner_01 {width:100%; height:100%; background:#fff}*/
+
+	</style>
+
+	<script>
+	$(document).ready(function () {
+			$('.tmpListbutton__').click(function () {
+				if ($(this).hasClass('tmpListbutton_sel__'))
+					return;
+
+				_tempList__Button(this);
+				var t = $(this).attr('name');
+				$(this).addClass('tmpListbutton_sel__');
+			});
+
+			$('.tmpListbutton2__').click(function () {
+				if ($(this).hasClass('tmpListbutton2_sel__'))
+					return;
+
+				_tempList2__Button(this);
+				var t = $(this).attr('name');
+				$(this).addClass('tmpListbutton2_sel__');
+			});
+	});
+
+	function _tempList__Button(obj){
+		$('.tmpListbutton__').each(function () {
+			if (this != obj) {
+				$(this).removeClass('tmpListbutton_sel__');
+			}
+		});
+	}
+
+	function _tempList2__Button(obj){
+		$('.tmpListbutton2__').each(function () {
+			if (this != obj) {
+				$(this).removeClass('tmpListbutton2_sel__');
+			}
+		});
+	}
+</script>
+
+    <body style="background:#e9e7e7;">
+		<div class="mtopLogo" style="background-color:white; border-bottom:1px solid #cac8c8; padding:8px 0 8px 0"><img src=../images/mlogo2.gif style="width:258px; height:44px;"></div>
+
+		<div class=mMenu>
+			<ul>
+				<li class="mMenuTab" style="width:40%;"><a href="./" class=menuList>작업지수/날씨</a></li>
+				<li class="mMenuTab" style="width:30%;"><span><a href="./forecast.html" class=menuList>해상정보</a></span></li>
+				<li class="mMenuTab"><a href="about.html" class=menuList>사업소개</a></li>
+			</ul>
+		</div>
+		
+		<div class="frameBox">
+				<div class="pointtitle"><span class="pointName">기상청</span> 레이더영상(강우량)</div>
+				<div><img src=http://www.kma.go.kr/repositary/image/rdr/site/RDR_JNI_latest.png style="width:100%;"></div>
+		</div>
+		
+		<div class="frameBox">
+				<div class="pointtitle"><span class="pointName">MOHID</span> 수온 예상 일기도</div>
+					
+										<script>
+												var currDate = new Date();				//현재날짜
+												var currDate2 = new Date();				//현재날짜
+
+												var cYear3 = currDate2.getFullYear();	//년
+												var cMon3 = currDate2.getMonth()+1;		//월
+												var cDay3 = currDate2.getDate();		//일
+												var cHours3 = currDate2.getHours();		//시간
+
+												if(cMon3<10) { cMon3 ='0'+cMon3 	}
+												if(cDay3<10) { cDay3 ='0'+cDay3 	}
+												var today3 = cYear3 + '' + cMon3 + '' + cDay3;
+												var today4 = cYear3 + '년 ' + cMon3 + '월 ' + cDay3 + '일 ';
+
+												if(0 <= cHours3 && cHours3 < 3)			
+													{
+														imgDate = today3 + "00.png"; 
+														imgDate2 = today4 + "00시"
+													}
+												else if(3 <= cHours3 && cHours3 < 6)	
+												{ 
+													imgDate = today3 + "03.png"; 
+													imgDate2 = today4 + "03시"
+												}
+												else if(6 <= cHours3 && cHours3 < 9)	
+												{ 
+													imgDate = today3 + "06.png"; 
+													imgDate2 = today4 + "06시"
+												}
+												else if(9 <= cHours3 && cHours3 < 12)	
+												{ 
+													imgDate = today3 + "09.png"; 
+													imgDate2 = today4 + "09시"
+												}
+												else if(12 <= cHours3 && cHours3 < 15)	
+												{ 
+													imgDate = today3 + "12.png";
+													imgDate2 = today4 + "12시"
+												}
+												else if(15 <= cHours3 && cHours3 < 18)	
+												{ 
+													imgDate = today3 + "15.png";
+													imgDate2 = today4 + "15시"
+												}
+												else if(18 <= cHours3 && cHours3 < 21)	
+												{ 
+													imgDate = today3 + "18.png"; 
+													imgDate2 = today4 + "18시"
+												}
+												else if(21 <= cHours3 && cHours3 <= 23)	
+												{ 
+													imgDate = today3 + "21.png"; 
+													imgDate2 = today4 + "21시"
+												}
+
+												
+
+												document.write("<div style='border:0px solid #cccccc; text-align:center;padding-top:15px; padding-bottom:15px;'>");
+												document.write("<span id=selectDate style='padding:0px 0 0px 0; text-decoration:under-line;'>" + imgDate2 + "</span><br>");
+												document.write("<img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + imgDate + "' name='itg' style='width:100%; padding-top:20px;' onError=\"this.src='../images/nodata.png'\">");
+												document.write("</div>");
+
+												document.write("<div style='text-align:center;'>");
+
+												for(var i=0; i<8; i++)
+												{
+														var cYear = currDate.getFullYear();	//년
+														var cMon = currDate.getMonth()+1;	//월
+														var cDay = currDate.getDate();		//일
+														var cMon2 = currDate.getMonth()+1;	//월
+														var cDay2 = currDate.getDate();		//일
+														var cHours = currDate.getHours();	//시간
+
+														if(cMon<10) { cMon ='0'+cMon 	}
+														if(cDay<10) { cDay ='0'+cDay 	}
+														var today = cYear + '' + cMon + '' + cDay; 
+
+														var today2 = cYear + '년 ' + cMon2 + '월 ' + cDay2 + '일'; 
+
+														if(i==0)	var tmpListbutton= "tmpListbutton__ tmpListbutton_sel__";
+														else		var tmpListbutton= "tmpListbutton__";
+
+														if(0 <= cHours && cHours < 3)			{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 00시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today + "00.png'\"></span> ");	}
+														else if(3 <= cHours && cHours < 6)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 03시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "03.png'\"></span> ");	}
+														else if(6 <= cHours && cHours < 9)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 06시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "06.png'\"></span> ");	}
+														else if(9 <= cHours && cHours < 12)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 09시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "09.png'\"></span> ");	}
+														else if(12 <= cHours && cHours < 15)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 12시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "12.png'\"></span> ");	}
+														else if(15 <= cHours && cHours < 18)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 15시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "15.png'\"></span> ");	}
+														else if(18 <= cHours && cHours < 21)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 18시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "18.png'\"></span> ");	}
+														else if(21 <= cHours && cHours <= 23)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate').innerHTML='" + today2 + " 21시'; itg.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + today +  "21.png'\"></span> ");	}
+
+														currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
+												}
+										
+												document.write("</div>");
+												
+										</script>
+		</div>
+
+
+
+		<div class="frameBox">
+				<div class="pointtitle"><span class="pointName">MOHID</span> 염분 예상 일기도</div>
+
+										<script>
+												var currDate = new Date();				//현재날짜
+												var currDate2 = new Date();				//현재날짜
+
+												var cYear3 = currDate2.getFullYear();	//년
+												var cMon3 = currDate2.getMonth()+1;		//월
+												var cDay3 = currDate2.getDate();		//일
+												var cHours3 = currDate2.getHours();		//시간
+
+												if(cMon3<10) { cMon3 ='0'+cMon3 	}
+												if(cDay3<10) { cDay3 ='0'+cDay3 	}
+												var today3 = cYear3 + '' + cMon3 + '' + cDay3;
+												var today4 = cYear3 + '년 ' + cMon3 + '월 ' + cDay3 + '일 ';
+
+												if(0 <= cHours3 && cHours3 < 3)			
+													{
+														imgDate = today3 + "00.png"; 
+														imgDate2 = today4 + "00시"
+													}
+												else if(3 <= cHours3 && cHours3 < 6)	
+												{ 
+													imgDate = today3 + "03.png"; 
+													imgDate2 = today4 + "03시"
+												}
+												else if(6 <= cHours3 && cHours3 < 9)	
+												{ 
+													imgDate = today3 + "06.png"; 
+													imgDate2 = today4 + "06시"
+												}
+												else if(9 <= cHours3 && cHours3 < 12)	
+												{ 
+													imgDate = today3 + "09.png"; 
+													imgDate2 = today4 + "09시"
+												}
+												else if(12 <= cHours3 && cHours3 < 15)	
+												{ 
+													imgDate = today3 + "12.png";
+													imgDate2 = today4 + "12시"
+												}
+												else if(15 <= cHours3 && cHours3 < 18)	
+												{ 
+													imgDate = today3 + "15.png";
+													imgDate2 = today4 + "15시"
+												}
+												else if(18 <= cHours3 && cHours3 < 21)	
+												{ 
+													imgDate = today3 + "18.png"; 
+													imgDate2 = today4 + "18시"
+												}
+												else if(21 <= cHours3 && cHours3 <= 23)	
+												{ 
+													imgDate = today3 + "21.png"; 
+													imgDate2 = today4 + "21시"
+												}
+
+												document.write("<div style='border:0px solid #cccccc; text-align:center;padding-top:15px; padding-bottom:15px;'>");
+												document.write("<span id=selectDate2 style='padding:0px 0 0px 0; text-decoration:under-line;'>" + imgDate2 + "</span><br>");
+												document.write("<img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='width:100%; padding-top:20px;' onError=\"this.src='../images/nodata.png'\">");
+												document.write("</div>");
+
+												document.write("<div style='text-align:center;'>");
+
+												for(var i=0; i<8; i++)
+												{
+														var cYear = currDate.getFullYear();	//년
+														var cMon = currDate.getMonth()+1;	//월
+														var cDay = currDate.getDate();		//일
+														var cMon2 = currDate.getMonth()+1;	//월
+														var cDay2 = currDate.getDate();		//일
+														var cHours = currDate.getHours();	//시간
+
+														if(cMon<10) { cMon ='0'+cMon 	}
+														if(cDay<10) { cDay ='0'+cDay 	}
+														var today = cYear + '' + cMon + '' + cDay; 
+
+														var today2 = cYear + '년 ' + cMon2 + '월 ' + cDay2 + '일'; 
+
+														if(i==0)	var tmpListbutton= "tmpListbutton2__ tmpListbutton2_sel__";
+														else		var tmpListbutton= "tmpListbutton2__";
+
+														if(0 <= cHours && cHours < 3)			{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 00시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "00.png'\"></span> ");	}
+														else if(3 <= cHours && cHours < 6)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 03시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "03.png'\"></span> ");	}
+														else if(6 <= cHours && cHours < 9)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 06시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "06.png'\"></span> ");	}
+														else if(9 <= cHours && cHours < 12)		{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 09시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "09.png'\"></span> ");	}
+														else if(12 <= cHours && cHours < 15)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 12시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "12.png'\"></span> ");	}
+														else if(15 <= cHours && cHours < 18)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 15시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "15.png'\"></span> ");	}
+														else if(18 <= cHours && cHours < 21)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 18시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "18.png'\"></span> ");	}
+														else if(21 <= cHours && cHours <= 23)	{	document.write("<span class='" + tmpListbutton + "' onClick=\"document.getElementById('selectDate2').innerHTML='" + today2 + " 21시'; itg2.src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + today + "21.png'\"></span> ");	}
+
+														currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
+												}
+										
+												document.write("</div>");
+												
+										</script>
+
+		</div>
+
+		<div class="frameBox">
+				<div class="pointtitle"><span class="pointName">MOHID</span> 시계열 자료</div>
+
+				<div class="frameBox" style="padding:0px;">
+						<table style="width:100%; border-collapse:collapse;">
+							<tr>
+									<td width=20%><span class="mpointButton__ mpointButton_sel__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Gagyo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Gagyo.png';">가교</span></td>
+									<td width=20%><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Gunoe.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Gunoe.png';">군외</span></td>
+									<td width=20%><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Geumdang.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Geumdang.png';">금당</span></td>
+									<td width=20%><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Geumil.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Geumil.png';">금일</span></td>
+							</tr>
+							<tr>
+									<td width=20%><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Nohwado.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Nohwado.png';">노화도</span></td>
+									<td width=20%><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Dangmok.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Dangmok.png';">당목</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Deokdo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Deokdo.png';">덕도</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Dongbaek.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Dongbaek.png';">동백</span></td>
+							</tr>
+							<tr>
+
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Myangnam.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Myangnam.png';">망남</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Baekdo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Baekdo.png';">백도</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Bogildo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Bogildo.png';">보길도</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Saengildo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Saengildo.png';">생일도</span></td>
+							</tr>
+							<tr>
+
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Yaksan.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Yaksan.png';">약산</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Iljung.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Iljung.png';">일정</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Jangdo.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Jangdo.png';">장도</span></td>
+									<td><span class="mpointButton__" onclick="itg3.src='http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Cheongsando.png';itg4.src='http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Cheongsando.png';">청산도</span></td>
+							</tr>
+						</table>
+				</div>
+				<img src="http://210.220.30.133:8080/ocean/NCL/timeseries/temp_Gagyo.png" name="itg3" style="width:100%; padding-top:20px;" onError=\"this.src='../images/nodata.png'\">
+				<img src="http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Gagyo.png" name="itg4" style="width:100%; padding-top:20px;" onError=\"this.src='../images/nodata.png'\">
+		</div>
+<!--
+ if(pos == '노화도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Nohwado.png';
+    }else if(pos == '백도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Baekdo.png';
+    }else if(pos == '청산도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Cheongsando.png';
+    }else if(pos == '망남'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Myangnam.png';
+    }else if(pos == '가교'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Gagyo.png';
+    }else if(pos == '일정'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Iljung.png';
+	}else if(pos == '금일'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Geumil.png';
+	}else if(pos == '동백'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Dongbaek.png';
+	}else if(pos == '장도'){
+        url = 'http://210.220.30.133:8080/ocean/NCL/timeseries/temp_.png';
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Jangdo.png';
+	}else if(pos == '약산'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Yaksna.png';
+	}else if(pos == '금당'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Geumdang.png';
+	}else if(pos == '생일도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Saengildo.png';
+	}else if(pos == '덕도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Deokdo.png';
+	}else if(pos == '당목'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Dangmok.png';
+	}else if(pos == '군외'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Gunoe.png';
+	}else if(pos == '보길도'){
+		url2 = 'http://210.220.30.133:8080/ocean/NCL/timeseries/sal_Bogildo.png';
+    }
+-->
+				<!--
+				<li style="text-align:center; border:0px solid #cccccc;">
+
+				<div class="swiper-container">
+						<div class="swiper-wrapper" style="padding-bottom:50px;">
+										<script>
+												var currDate = new Date();				//현재날짜
+												var currDate2 = new Date();				//현재날짜
+
+												for(var i=0; i<12; i++)
+												{
+														var cYear = currDate.getFullYear();	//년
+														var cMon = currDate.getMonth()+1;	//월
+														var cDay = currDate.getDate();		//일
+														var cMon2 = currDate.getMonth()+1;	//월
+														var cDay2 = currDate.getDate();		//일
+														var cHours = currDate.getHours();	//시간
+
+														if(cMon<10) { cMon ='0'+cMon 	}
+														if(cDay<10) { cDay ='0'+cDay 	}
+														var today = cYear + '' + cMon + '' + cDay; 
+
+														var today2 = cYear + '년 ' + cMon2 + '월 ' + cDay2 + '일'; 
+
+														if(i==0)	var tmpListCss= "tmpList2__ tmpList_sel2__";
+														else		var tmpListCss= "tmpList2__";
+															if(0 <= cHours && cHours < 3)		{	document.write("<div class='swiper-slide'>" + today2 +" 00시 <img src='../mohid/Wando_sal_" + today + "00.png' width=85%\"></div>");	}
+															if(3 <= cHours && cHours < 6)		{	document.write("<div class='swiper-slide'>" + today2 +" 03시 <img src='../mohid/Wando_sal_" + today + "03.png' width=85%\"></div>");	}
+															if(6 <= cHours && cHours < 9)		{	document.write("<div class='swiper-slide'>" + today2 +" 06시 <img src='../mohid/Wando_sal_" + today + "06.png' width=85%\"></div>");	}
+															if(9 <= cHours && cHours < 12)		{	document.write("<div class='swiper-slide'>" + today2 +" 09시 <img src='../mohid/Wando_sal_" + today + "09.png' width=85%\"></div>");	}
+															if(12 <= cHours && cHours < 15)		{	document.write("<div class='swiper-slide'>" + today2 +" 12시 <img src='../mohid/Wando_sal_" + today + "12.png' width=85%\"></div>");	}
+															if(15 <= cHours && cHours < 18)		{	document.write("<div class='swiper-slide'>" + today2 +" 15시 <img src='../mohid/Wando_sal_" + today + "15.png' width=85%\"></div>");	}
+															if(18 <= cHours && cHours < 21)		{	document.write("<div class='swiper-slide'>" + today2 +" 18시 <img src='../mohid/Wando_sal_" + today + "18.png' width=85%\"></div>");	}
+															if(21 <= cHours && cHours <= 23)	{	document.write("<div class='swiper-slide'>" + today2 +" 21시 <img src='../mohid/Wando_sal_" + today + "21.png' width=85%\"></div>");	}
+														//document.write(cHours);
+														currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
+
+												}
+
+										</script>
+						</div>
+						<div class="swiper-pagination"></div> 
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+				</div>
+			<li>
+				
+<script>
+		var swiper = new Swiper('.swiper-container', 
+		{
+			pagination: '.swiper-pagination',
+			paginationClickable: '.swiper-pagination',
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			spaceBetween: 30,
+			loop : true
+		}	);
+		
+	</script>
+					-->		
+
+
+		<div style="border-bottom:1px solid #cac8c8"><img src=/ocean/images/maddress.gif width=100%></div>
+	</body>
+</html>
+

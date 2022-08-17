@@ -1,0 +1,238 @@
+;*********************************************************
+; timeseries.ncl
+; Export timeseire of temperature about 87 Hours
+;********************************************************* 
+
+;load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+load "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+;load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
+load "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
+;load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
+load "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/lib/ncarg/nclscripts/csm/contributed.ncl"
+;load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/shea_util.ncl"
+load "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/lib/ncarg/nclscripts/csm/shea_util.ncl"
+;load "$NCARG_ROOT/lib/ncarg/nclscripts/contrib/time_axis_labels.ncl"
+load "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/lib/ncarg/nclscripts/contrib/time_axis_labels.ncl"
+
+setvalues NhlGetWorkspaceObjectId()
+    "wsMaximumSize" : 100000000
+end setvalues
+
+begin
+
+;******************************************************
+; File Read
+;******************************************************
+   today = systemfunc("date -d 'yesterday' +%Y%m%d00")
+   f_in = addfile("/home/wando/mod/WANDO_HYDR_"+today+".nc","r")
+  printVarSummary( f_in )
+;******************************************************
+; Read Time
+;******************************************************
+   time0 = f_in->time(0:29)
+   time0@units = "seconds since 2005-01-01 00:00:00"
+;******************************************************
+; Change UST -> KST
+;******************************************************
+   dt=dimsizes(time0)
+   time = new((/dt/),"double")
+   time@units = "seconds since 2005-01-01 00:00:00"
+   time(:)= time0 + 32400
+   times =tostring(time)
+   print (time)
+   print (times)
+;******************************************************
+   date = ut_calendar(time, 0)
+   date1 = ut_calendar(time, -3)
+   yyyy = tointeger(date(:,0))
+   mm   = tointeger(date(:,1))
+   dd   = tointeger(date(:,2))
+   hh   = tointeger(date(:,3))
+   date_str = sprinti("%0.2i/", mm) + \
+              sprinti("%0.2i ", dd) + sprinti("%0.2i:00", hh) 
+   printVarSummary(date)
+
+do ii = 0,dt-1
+;******************************************************
+; Read location.txt
+  location = systemfunc("cat /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/code/location.txt | awk '{print $1}'")
+  lon = systemfunc("cat /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/code/location.txt | awk '{print $2}'")
+  lat = systemfunc("cat /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/code/location.txt | awk '{print $3}'")
+;******************************************************
+;******************************************************
+; Read Temperature
+;******************************************************
+   temp = f_in->temperature(0:29,10,{lat(ii)},{lon(ii)})
+   temp@units = "degC"
+   temp@_FillValue = -9.899999e+15
+   printVarSummary( temp )
+;******************************************************
+; Define the workstation (plot type and name)
+;******************************************************
+  res = True
+  wks = gsn_open_wks("png", "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/temp_"+location(ii)+"")          ; File name
+  plot = new(1, graphic)
+
+  res@gsnDraw = False
+  res@gsnFrame = False
+;******************************************************
+; Grid line settings
+;******************************************************
+  res@tmXMajorGrid                = True          ; implement x grid 
+  res@tmXMajorGridThicknessF      = 1.0           ; 2.0 is default
+  res@tmXMajorGridLineDashPattern = 2             ; select short dash lines
+  
+  res@tmYMajorGrid                = True          ; implement y grid
+  res@tmYMajorGridThicknessF      = 1.0           ; 2.0 is default
+  res@tmYMajorGridLineDashPattern = 2             ; select short dash lines
+;******************************************************
+
+  res@tmYROn = False                ; turn off top labels 
+  res@tmXTOn = False                ; turn off right labels 
+
+  res@vpWidthF    = 0.9             ; viewport width
+  res@vpHeightF   = 0.2             ; viewport height
+  res@vpXF        = 0.125           ; viewport x start pos
+
+  res@trXMinF     = min( time )         ; x-axis min value 
+  res@trXMaxF     = max( time )         ; x-axis max value 
+  res@trYMinF     = 6                   ; x-axis min value
+  res@trYMaxF     = 30                  ; y-axis max value 
+
+  res@tmXBMode             = "Explicit"        ; use explicit x-axis values
+  res@tmXBValues           = time(::5)         ; x-axis values (every 4th)
+  res@tmXBLabels           = date_str(::5)     ; x-axis label (every 4th)
+  res@tmXBLabelDeltaF      = 0.15              ; move x-axis labels down
+  res@tmXBLabelFontHeightF = 0.012             ; decrease x-axis label font size 
+  res@tmXBMinorPerMajor    = 4                 ; draw 4 minor tickmarks between 
+                                               ; the labeld major tickmarks
+  
+  res@tmXBMajorLengthF     = 0.013             ; change the x-axis tickmark length
+ 
+  
+  res@tmYLMode             = "Manual"          ; set tickmarks resources manually
+  res@tmYLTickSpacingF     = 4    	       ; label every 2.5th tickmark
+  res@tmYLMinorPerMajor    = 4                 ; draw 4 minor tickmarks between 
+                                               ; the labeld major tickmarks
+  res@tmYLLabelFontHeightF = 0.015             ; decrease y-axis label font size 
+  res@tmYLMajorLengthF     = 0.013             ; change the y-axis tickmark length
+
+  res@tiXAxisString        = "Time (mm/dd hh:00)"
+  res@tiYAxisString        = "Temperature (~S~o~N~C)"             
+  
+  res@tiXAxisFontHeightF = 0.018
+  res@tiYAxisFontHeightF = 0.018
+  
+  res@xyMarkLineMode = "MarkLines"      ; Line mode
+  res@xyDashPattern  =  0
+  res@xyLineThicknesses = (/3.0, 3.0/)
+  res@xyMarkers      = (/16, 16/)
+  res@xyMarkerSizes      = (/5, 5/)
+  res@xyLineColors = (/"red", "blue"/) 
+;******************************************************
+  resP = True
+  resP@gsnPanelFigureStrings= (/location(ii),"B"/)      ; Location name
+  resP@amJust   = "TopLeft"
+;******************************************************
+  plot(0) = gsn_csm_xy( wks, time, temp,res)
+ 
+  resP=True
+  resP@gsnPanelYWhiteSpacePercent = 3
+  resP@gsnPanelXWhiteSpacePercent = 5
+  gsn_panel( wks, plot, (/1,1/),resP )
+
+  cmd1 = "convert -trim /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/temp_"+location(ii)+".png /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/temp_"+location(ii)+".png"
+  system(cmd1)
+;******************************************************
+; Read Salinity
+;******************************************************
+   sal = f_in->salinity(0:29,10,{lat(ii)},{lon(ii)})
+   sal@units = "PSU"
+   sal@_FillValue = -9.899999e+15
+   printVarSummary( sal )
+;******************************************************
+; Define the workstation (plot type and name)
+;******************************************************
+  res2 = True
+  wks2 = gsn_open_wks("png", "/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/sal_"+location(ii)+"")
+  plot = new(1, graphic)
+
+  res2@gsnDraw = False
+  res2@gsnFrame = False
+;******************************************************
+; Grid line settings
+;******************************************************
+
+  res2@tmXMajorGrid                = True          ; implement x grid 
+  res2@tmXMajorGridThicknessF      = 1.0           ; 2.0 is default
+  res2@tmXMajorGridLineDashPattern = 2             ; select short dash lines
+  
+  res2@tmYMajorGrid                = True          ; implement y grid
+  res2@tmYMajorGridThicknessF      = 1.0           ; 2.0 is default
+  res2@tmYMajorGridLineDashPattern = 2             ; select short dash lines
+;******************************************************
+
+  res2@tmYROn = False                ; turn off top labels 
+  res2@tmXTOn = False                ; turn off right labels 
+
+  res2@vpWidthF    = 0.9             ; viewport width
+  res2@vpHeightF   = 0.2             ; viewport height
+  res2@vpXF        = 0.125           ; viewport x start pos
+
+  res2@trXMinF     = min( time )         ; x-axis min value 
+  res2@trXMaxF     = max( time )         ; x-axis max value 
+  res2@trYMinF     = 30                   ; x-axis min value
+  res2@trYMaxF     = 35                  ; y-axis max value 
+
+  res2@tmXBMode             = "Explicit"        ; use explicit x-axis values
+  res2@tmXBValues           = time(::5)         ; x-axis values (every 4th)
+  res2@tmXBLabels           = date_str(::5)     ; x-axis label (every 4th)
+  res2@tmXBLabelDeltaF      = 0.15              ; move x-axis labels down
+  res2@tmXBLabelFontHeightF = 0.012             ; decrease x-axis label font size 
+  res2@tmXBMinorPerMajor    = 4                 ; draw 4 minor tickmarks between 
+                                               ; the labeld major tickmarks
+  
+  res2@tmXBMajorLengthF     = 0.013             ; change the x-axis tickmark length
+ 
+  
+  res2@tmYLMode             = "Manual"          ; set tickmarks resources manually
+  res2@tmYLTickSpacingF     = 1    	       ; label every 2.5th tickmark
+  res2@tmYLMinorPerMajor    = 1                 ; draw 4 minor tickmarks between 
+                                               ; the labeld major tickmarks
+  res2@tmYLLabelFontHeightF = 0.015             ; decrease y-axis label font size 
+  res2@tmYLMajorLengthF     = 0.013             ; change the y-axis tickmark length
+
+  res2@tiXAxisString        = "Time (mm/dd hh:00)"
+  res2@tiYAxisString        = "Salinity(PSU)"  
+
+  res@tiXAxisFontHeightF = 0.018
+  res@tiYAxisFontHeightF = 0.018           
+  
+  res2@xyMarkLineMode = "MarkLines"      ; Line mode
+  res2@xyDashPattern  =  0
+  res2@xyLineThicknesses = (/3.0, 3.0/)
+  res2@xyMarkers      = (/16, 16/)
+  res2@xyMarkerSizes      = (/5, 5/)
+  res2@xyLineColors = (/"red", "blue"/) 
+;******************************************************
+  res2P = True
+  res2P@gsnPanelFigureStrings= (/location(ii),"B"/)
+  res2P@amJust   = "TopLeft"
+;******************************************************
+  plot(0) = gsn_csm_xy(wks2, time, sal,res2)
+ 
+  res2P=True
+  res2P@gsnPanelYWhiteSpacePercent = 3
+  res2P@gsnPanelXWhiteSpacePercent = 5
+  gsn_panel( wks2, plot, (/1,1/),res2P )
+
+  cmd2 = "convert -trim /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/sal_"+location(ii)+".png /usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/sal_"+location(ii)+".png"
+  system(cmd2)
+
+  header ="Year  " + "Month  "+ "Day  "+ "Hour  "+ "Temp     "+ "Sal  "
+  write_table("/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/"+location(ii)+".txt", "w", [/header/], "%s")    ; Use "w" to create file
+  write_table("/usr/local/server/tomcat/webapps/ROOT/ocean/NCL/timeseries/"+location(ii)+".txt","a",[/yyyy, mm, dd, hh, temp, sal/],"%4i %4.2i %5i %5.2i %7.2f %7.2f")
+
+end do
+end
+

@@ -1,0 +1,94 @@
+.main {margin-top:50px; margin-left: auto; margin-right: auto; width:1100px;}
+.main .title {  font-size: 25px; color: #3271bf; height: 70px; font-weight: 900; width: 100%; background-repeat: no-repeat;}
+
+.left {display: inline-table; width: 150px; height: 900px; text-align: center;}
+.left .left_title {height:22px; color: #fff; background-color: #b34bd7; width: 110px; margin-left: auto; margin-right: auto; font-size: 15px; font-weight: 700; border-bottom:2px solid #0d5837; border-right: 2px solid #0d5837;}
+.left .left_item { text-align: left; vertical-align:middle; width:110px; margin-left:auto; margin-right:auto; border-bottom: #CCC solid 1px; color: #6081E0; font-size: 15px; height: 23px; cursor: pointer;}
+.left .left_item_sel { text-align: left;  background-color:rgba(128,128,128,0.2); vertical-align:middle; width:110px; margin-left:auto; margin-right:auto; border-bottom: #CCC solid 1px; color: #1b3377; font-size: 14px; height: 23px;}
+.left .left_item_sub { font-size: 11px; width:90px; line-height: 25px;}
+.left .left_item_stat { cursor: default;}
+
+.contents{display: inline-table; width: 1024px; height: 900px; top: 0px; margin-top: 0px;}
+.contents .content_title {text-align: left; width: 1024px; height: 0px; font-size: 30px; font-weight: 900;color: #616161; margin-left: 10px;}
+.contents .pds_table {height: 1315px; width:900px; border: 1px solid #808080; font-size: 10px; border-spacing: 0;}
+.contents .pds_table th {background-color: #6081E0; color: #fff; font-size: 12px; border: 1px solid #000;}
+.contents .pds_table td {color: #6081E0; font-size: 12px; border: 1px solid #ccc;}
+.contents .pds_table .download_file {cursor: pointer;}
+.contents .weather_content { width: 1024px; overflow:hidden;}
+.contents .weather_content2 { width: 1024px; }
+.contents .weatherClick { cursor: pointer;}
+.contents .weatherClicked { background-color: #CCC;}
+.contents .sea_content {overflow: hidden;}
+.contents .content_body{ width: 100%; height: 100%; text-align: center; font-size: 100px; color: #f00;}
+
+.contents .map_contents {overflow: hidden; width: 450px; height: 450px; display: inline-block; float: left;}
+.infoWindow {width:152px; height:23px; text-align:center; background-color: #fff; color: #000; vertical-align: middle;}
+
+.weather_item { font-size: 20px; font-weight: 700; width: 100px; height: 25px; line-height: 10px; cursor: pointer;}
+.weather_item_sel { background-color: #6081E0; color: #fff; cursor: default;}
+
+
+.index_item { width: 100px; height: 25px; line-height: 10px; cursor: pointer;}
+.index_item1 { width: 100px; height: 25px; line-height: 10px; cursor: pointer;}
+.index_item_sel { background-color: #6081E0; color: #fff; cursor: default;}
+.index_arrow {float: right; height: 30px; text-align: right;}
+.index_prev { display: inline-block; width: 120px;cursor: pointer; height: 20px; }
+.index_title { display: inline-block; margin-top:10px;}
+.index_next { display: inline-block; width: 120px;cursor: pointer; height: 20px; }
+.index_list {width: 750px;}
+.index_table table {height: 90px; width:780px; font-size: 10px; border-spacing: 0;}
+.index_table table th {background-color: #cfcdcd; color: #1B40A8; font-size: 12px; border: 1px solid #aeadad; height: 25px;}
+.index_table table td {text-align:center; font-size: 12px; border: 1px solid #aeadad; height:28px}
+.chart { width: 1000px; height: 100%; margin-left:-100px; left: 0px; top: 0px; z-index: 9; }
+
+.idx_1 { background-color:#cdf484; color: #aeadad; }
+.idx_2 { background-color:#7ac7f3; color: #aeadad; }
+.idx_3 { background-color:#c986f7; color: #aeadad; }
+.idx_4 { background-color:#ee4848; color: #aeadad; }
+
+.weather_item__ { color:#000; display:inline-block; text-align:center; font-size: 14px; font-weight: 700; width: 100px; height: 25px; cursor: pointer; background-color: #CCC ; border: 1px solid #CCC; border-top-left-radius: 8px; border-top-right-radius: 8px;  }
+.weather_item_sel__ { color:#fff; display:inline-block; text-align:center; font-size: 14px; font-weight: 700; width: 100px; height: 25px; cursor: pointer; background-color: #6081E0 ; border: 1px solid #6081E0; border-top-left-radius: 8px; border-top-right-radius: 8px;  }
+
+
+.weather_item2__ { line-height:25px; color:#000; display:inline-block; text-align:center; font-size: 10px; font-weight: 700; width: 110px; height: 25px; cursor: pointer; background-color: #CCC ; border: 1px solid #CCC; border-top-left-radius: 8px; border-top-right-radius: 8px;  }
+.weather_item2_sel__ { color:#fff; display:inline-block; text-align:center; font-size: 10px; font-weight: 700; width: 110px; height: 25px; cursor: pointer; background-color: #6081E0 ; border: 1px solid #6081E0; border-top-left-radius: 8px; border-top-right-radius: 8px;  }
+
+#radar_control_div { width: 422px ; height: 115px ; padding: 15px 10px 10px 10px ; font-weight: bold ; font-size: 13px ; }
+#radar_cd_box_left {
+    position: relative;
+    margin: 20px 0 0 20px;
+    width: 276px;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: top;
+    background: #000;
+    /*background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VlZWVlZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2NjY2NjYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2NjY2NjYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZWVlZWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);*/
+    background: -moz-linear-gradient(top,  #006ad0 0%, #4293e2 20%, #006ad0 40%, #006ad0 60%, #4293e2 80%, #006ad0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#006ad0), color-stop(20%,#4293e2), color-stop(40%,#006ad0), color-stop(60%,#006ad0), color-stop(80%,#4293e2), color-stop(100%,#006ad0));
+    background: -webkit-linear-gradient(top,  #006ad0 0%,#4293e2 20%,#006ad0 40%,#006ad0 60%,#4293e2 80%,#006ad0 100%);
+    background: -o-linear-gradient(top,  #006ad0 0%,#4293e2 20%,#006ad0 40%,#006ad0 60%,#4293e2 80%,#006ad0 100%);
+    background: -ms-linear-gradient(top, #006ad0 0%,#4293e2 20%,#006ad0 40%,#006ad0 60%,#4293e2 80%,#006ad0 100%);
+    background: linear-gradient(to bottom,  #006ad0 0%,#4293e2 20%,#006ad0 40%,#006ad0 60%,#4293e2 80%,#006ad0 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006ad0', endColorstr='#4293e2',GradientType=0 );
+    -webkit-box-shadow: inset 0px 0px 4px 0px rgba(102,102,102,1);
+    -moz-box-shadow: inset 0px 0px 4px 0px rgba(102,102,102,1);
+    box-shadow: inset 0px 0px 4px 0px rgba(102,102,102,1);
+}
+#radar_cd_bl_bar{ position: absolute ; top: 2px ; left: 5px ; width: 266px ; height: 8px ; border-radius: 4px ; background: #FFF; margin: 10px auto ; }
+#radar_cd_bl_point { position: absolute ; top: 11px ; }
+#radar_cd_box_right { margin-top: 8px; width: 90px ; height: 54px ; }
+
+#ps_btn_play { position: absolute ; margin: 12px 4px ; cursor: pointer ; z-index: 10 ; }
+#ps_btn_stop { position: absolute ; vertical-align: top ; margin: 15px 0 0 38px ; cursor: pointer ; z-index: 10 ; }
+#radar_cd_bl_craduation li { position: absolute ; width: 1px ; height: 20px ; background-color: #000 ; }
+#ps_cd_time { margin: -5px 0 0 -23px ;}
+#ps_cd_time li { font-weight: normal ; cursor: pointer ; font-size: 12px ; }
+#ps_cd_time li:hover { color: #4966c7 ; font-weight: bold ; }
+
+.pclass_map_point { width: 5px ; height: 5px ; background-color: red ; border-radius: 4px ; }
+.pclass_map_text { padding: 0 10px ; color: blue ; font-family: NanumGothic ; font-weight: 900 ; font-size: 12px ; }
+.pclass_row { margin-bottom: 25px ; }
+.pclass_dib { display: inline-block ; vertical-align: top ; }
+.pclass_mlp { margin-left: 6.0px ; }
+.pclass_mls4 { margin-left: -4px ; }

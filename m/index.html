@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html5/loose.dtd">
+
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes,user-scalable=1, target-densitydpi=medium-dpi">
+        <title>기상청 전복사업</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/newmain.css">
+        <script type="text/javascript" src="../js/libs/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="../js/libs/jquery.xdomain.js"></script>
+        <script type="text/javascript" src="../js/newMobileMain.js"></script>
+        <script type="text/javascript" src="../js/newMobileChart.js"></script>
+		<script type="text/javascript" src="../js/m.js"></script>
+    </head>
+	
+
+    <body style="background:#e9e7e7;">
+		<div class="mtopLogo" style="background-color:white; border-bottom:1px solid #cac8c8; padding:8px 0 8px 0"><img src=../images/mlogo2.gif style="width:258px; height:44px;"></div>
+
+		<div class=mMenu>
+			<ul>
+				<li class="mMenuTab" style="width:40%"><span><a href="./" class=menuList>작업지수/날씨</a></span></li>
+				<li class="mMenuTab" style="width:30%"><a href="./forecast.html" class=menuList>해상정보</a></li>
+				<li class="mMenuTab"><a href="about.html" class=menuList>사업소개</a></li>
+			</ul>
+		</div>
+
+
+
+		<div class="frameBox" style="padding:0px;">
+				<table style="width:100%; border-collapse:collapse;">
+					<tr>
+							<td><span class="mpointButton__ mpointButton_sel__" onclick="goURL('고금면')">고금면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('군외면')">군외면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('금당면')">금당면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('금일읍')">금일읍</span></td>
+					</tr>
+					<tr>
+							<td><span class="mpointButton__" onclick="goURL('노화읍')">노화읍</span></td>
+							<td><span class="mpointButton__" onclick="goURL('보길면')">보길면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('생일면')">생일면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('소안면')">소안면</span></td>
+					</tr>
+					<tr>
+							<td><span class="mpointButton__" onclick="goURL('신지면')">신지면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('약산면')">약산면</span></td>
+							<td><span class="mpointButton__" onclick="goURL('완도읍')">완도읍</span></td>
+							<td><span class="mpointButton__" onclick="goURL('청산면')">청산면</span></td>
+					</tr>
+				</table>
+		</div>
+
+		<div class="frameBox">
+				<div class="pointtitle"><span id="position" class="pointName">오늘</span> 현재 날씨  <span id="curDateTime1"></span></div>
+				<div style="background-image:url('../images/weatherBg.jpg'); padding:15px 0 15px 0;">
+						<table border=0 style="font-size:14px; font-weight:bold; text-align:left; width:100%; background-image:url('../images/weatherBg.jpg');">
+							<tr>
+								<td rowspan=6 style="width:35%; line-height:150%;text-align:center; font-weight:600; font-size:22px; color:white; text-shadow:0px 1px 0px rgba(0,0,0,0.2);">
+											<img id="sky_icon" src="" style="width:75px; height:70px;" alt="a">
+											<br>
+											<span id="sky_value">맑음</span> 
+											<br>
+											<span id="tempo">29</span>
+								</td>
+								<td rowspan=6 style="height:100%;border-left:1px dashed white"></td>
+
+								<td class="currWeather" style="width:70%;">
+									풍  &nbsp;&nbsp; 향 : <img id="wind_icon" class="WSD_POS" alt="-90" src="../images/arrowwhite.gif" style="width:15px; height:12px; margin-left:5px; -webkit-filter:drop-shadow(0px 1px 0px rgba(0,0,0,0.2)); filter:drop-shadow:0px 1px 0px rgba(0,0,0,0.2);">
+											(<span id=wind_val style="padding:0px 3px 0px 3px;"></span>)
+								</td>
+							</tr>
+							<tr>
+								<td class="currWeather">풍 &nbsp;&nbsp; 속 : <span id="wind_text" style="margin-left:5px;"></span></td>
+							</tr>
+							<tr>
+								<td class="currWeather">파 &nbsp;&nbsp; 고 : <span id="wave" style="margin-left:5px;"></span></td>
+							</tr>
+							<tr>
+								<td class="currWeather">강수량 : <span id="rain" style="margin-left:7px;"></span></td>
+							</tr>
+							<tr>
+								<td class="currWeather">수 &nbsp;&nbsp; 온 : <span id="wth" style="margin-left:5px;"></span></td>
+							</tr>
+							<tr>
+								<td class="currWeather">표층용존산소 : <span id="dox" style="margin-left:5px;"></span></td>
+							</tr>
+						</table>
+				</div>
+
+				<div id="index_table8"></div>
+
+				<div style="margin:25px 0 20px 0; border-bottom:1px dashed #cccccc;"></div>
+
+				<table border=0 style="font-size:15px; text-align:center; width:100%">
+							<tr>
+								<td colspan=5 class="pointtitle">
+									<span id="position2" class="pointName">오늘</span> 현재 작업지수<span id="curDateTime2"></span>
+								</td>
+							</tr>
+				</table>
+				<div id="index_table7"></div>
+
+		</div>
+		
+
+		<div class="frameBox">
+				
+				<div style="font-weight:bold; width:100%; margin-bottom:15px;">
+					<span id="position2" class="pointName">완도</span> 물때표 
+					<br>
+					<div style="margin-left:3px; border:0px solid red; margin-top:3px; padding-left:5px; border-left:2px solid #111111;">
+						<span style="font-size:15px; color:#111111; letter-spacing:-1px; font-weight:normal;">
+							주소 : 전라남도 완도군 완도읍 군내리 <br> 북위 : 34도 18분 55초 / 동경 : 126도 45분 34초
+						</span>
+					</div>
+
+				</div>
+				<table border=0 style="width:100%; font-size:15px; border-top:0px solid #cccccc;  border-bottom:0px solid #cccccc;">
+					<tr>
+						<td class=tide01-1 style="background:#fff;">
+							<span id="wv10v" style="color:#0180c4"></span> <br /> 
+							<span style="font-size:14px; padding-right:5px;" id="wv_name1"></span>
+						</td>	
+						
+						<td class=tide01-2 style="background:#fff;">
+							일출 <span id="wv6v" style="font-weight:bold;"></span><br />
+							일몰 <span id="wv7v" style="font-weight:bold;"></span>
+						</td>
+
+						<td rowspan=4 style="border-right:1px dashed #cccccc"></td>
+
+						<td class=tide02-1 style="border-bottom:#fff">
+							<span id="wv102v" style="color:#0180c4"></span><br /> 
+							<span style="font-size:14px; padding-right:5px;" id="wv_name2"></span>
+						</td>										
+						<td class=tide02-2 style="border-bottom:#fff">
+							일출 <span id="wv62v" style="font-weight:bold;"></span><br />
+							일몰 <span id="wv72v" style="font-weight:bold;"></span>
+						</td>
+					</tr>
+					<tr style="border-right:1px solid red;">
+						<td class=tide01-3 style="background:#fff;">
+							<span id="wv1t"></span><br />
+							<span id="wv2t"></span><br />
+							<span id="wv3t"></span><br />
+							<span id="wv4t"></span><br />
+						</td>										
+						<td class=tide01-4 style="background:#fff;">
+							<span id="wv1v"></span><br />
+							<span id="wv2v"></span><br />
+							<span id="wv3v"></span><br />
+							<span id="wv4v"></span><br />
+						</td>
+
+						<td class=tide02-3>
+							<span id="wv12t"></span><br />
+							<span id="wv22t"></span><br />
+							<span id="wv32t"></span><br />
+							<span id="wv42t"></span><br />
+						</td>										
+						<td class=tide02-4>
+							<span id="wv12v"></span><br />
+							<span id="wv22v"></span><br />
+							<span id="wv32v"></span><br />
+							<span id="wv42v"></span><br />
+						</td>
+					</tr>
+				</table>
+		</div>
+
+
+
+		<div class="frameBox">
+							<div class="pointtitle">
+									<span id='position3' style='color:#007aff;'></span> 작업지수 예보 
+							</div>
+
+							<div id="bNavi1">	  
+									<div style='margin-top:20px; margin-bottom:0px; padding-top:0px; padding-bottom:5px;font-size:15px;'>	  
+											<span onClick="document.getElementById('bNavi1').style.display='block'; document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';" style="padding:4px 15px 4px 15px; font-weight:bold; color:#0672d4; border:1px solid #0672d4;">전복</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='block';document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';" style="padding-right:10px; padding:4px 15px 4px 15px; color:#777777;  border:1px solid #cccccc;">미역</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='block'; document.getElementById('bNavi4').style.display='none';" style="cursor:pointer; padding-right:10px;padding:4px 15px 4px 15px; color:#777777; border:1px solid #cccccc;">다시마</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='block';" style="cursor:pointer; padding-right:10px;padding:4px 25px 4px 25px ;color:#777777; border:1px solid #cccccc;">김</span>
+									</div>
+															
+									<div class="index_table" id="index_table1" style="border:1px solid #0672d4"></div>
+							</div>
+
+							<div id="bNavi2" style="display:none;">	   
+									<div style='margin-top:20px; padding-bottom:5px;font-size:15px;'>	
+											<span onClick="document.getElementById('bNavi1').style.display='block'; document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';"  style="cursor:pointer; padding-right:10px; padding:4px 15px 4px 15px; border:1px solid #cccccc; color:#777777;">전복</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='block';document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';"  style="cursor:pointer;padding:4px 15px 4px 15px; font-weight:bold; color:#0672d4; border-bottom:1px solid #0672d4; border:1px solid #0672d4">미역</span></a>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='block';document.getElementById('bNavi4').style.display='none';" style="cursor:pointer; padding-right:10px; color:#777777;padding:4px 15px 4px 15px; border:1px solid #cccccc;">다시마</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='block';" style="cursor:pointer; padding-right:10px; padding:4px 25px 4px 25px;color:#777777;border:1px solid #cccccc;">김</span>
+									</div>
+									<div class="index_table" id="index_table2" style="border:1px solid #0672d4"></div>
+							</div>
+
+							<div id="bNavi3" style="display:none;">	  
+									<div style='margin-top:20px; padding-bottom:5px;font-size:15px;'>	
+											<span onClick="document.getElementById('bNavi1').style.display='block'; document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';"  style="cursor:pointer;  padding:4px 15px 4px 15px; color:#777777;border:1px solid #cccccc;">전복</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='block';document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';" style="cursor:pointer; padding:4px 15px 4px 15px; color:#777777;border:1px solid #cccccc;">미역</span></a>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='block'; document.getElementById('bNavi4').style.display='none';" style="cursor:pointer;  padding:4px 15px 4px 15px; font-weight:bold; color:#0672d4; border:1px solid #0672d4;">다시마</span></a>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='block';" style="cursor:pointer; padding:4px 25px 4px 25px; color:#777777; border:1px solid #cccccc;">김</span>
+									</div>
+									<div class="index_table" id="index_table3" style="border:1px solid #0672d4"></div>
+							</div>
+
+							<div id="bNavi4" style="display:none;">	  
+									<div style='margin-top:20px; padding-bottom:5px;font-size:15px;'>	
+											<span onClick="document.getElementById('bNavi1').style.display='block'; document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='none';"  style="cursor:pointer;padding:4px 15px 4px 15px; color:#777777;border:1px solid #cccccc;">전복</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='block';document.getElementById('bNavi3').style.display='none';document.getElementById('bNavi4').style.display='none';"  style="cursor:pointer; padding:4px 15px 4px 15px; color:#777777;border:1px solid #cccccc;">미역</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='block'; document.getElementById('bNavi4').style.display='none';" style="cursor:pointer; padding:4px 15px 4px 15px; color:#777777;border:1px solid #cccccc;">다시마</span>
+
+											<span onClick="document.getElementById('bNavi1').style.display='none';  document.getElementById('bNavi2').style.display='none'; document.getElementById('bNavi3').style.display='none'; document.getElementById('bNavi4').style.display='block'; " style="cursor:pointer;padding:4px 25px 4px 25px; font-weight:bold; color:#0672d4; border:1px solid #0672d4;">김</span>
+									</div>
+									<div class="index_table" id="index_table4" style="border:1px solid #0672d4"></div>
+							</div>
+		</div>
+
+		<div style="border-bottom:1px solid #cac8c8"><img src=../images/maddress.gif width=100%></div>
+	</body>
+</html>
+<script type="text/javascript">
+    //_openWeather('노화도');
+
+	//처음 접속시 지역 포인트가 없으므로 한번 무조건 고금면으로 작업 시작
+	//다음지도에서 지역 포인트를 클릭하면 testnewmain.js 파일에서 makeMarker() 스크립트 호출
+    loadWeathers(null, function(result) {
+        check('고금면');
+        var div1 = document.getElementById('index_table1');
+        var div2 = document.getElementById('index_table2');
+		var div3 = document.getElementById('index_table3');
+		var div4 = document.getElementById('index_table4');
+		var div7 = document.getElementById('index_table7'); //현재 전복, 미역, 다시마, 김 작업지수
+		var div8 = document.getElementById('index_table8'); //동네예보
+
+        drawTable3(div1, '고금면');
+        drawTable4(div2, '고금면');
+		drawTable5(div3, '고금면');
+		drawTable6(div4, '고금면');
+		currdrawTable2(div7, '고금면');	//현재 전복, 미역, 다시마, 김 작업지수
+		drawTable8(div8, '고금면');	// 동네예보
+        //_loadMap();
+        _openAreaForecast('고금면');    
+    });
+</script>

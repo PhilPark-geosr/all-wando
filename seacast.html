@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <title>광주지방기상청</title>
+        <link rel="stylesheet" type="text/css" href="./css/newmain.css">
+       <script type="text/javascript" src="./js/libs/jquery-2.2.0.min.js"></script>
+        <!-- <script type="text/javascript" src="./js/libs/jquery.xdomain.js"></script> -->
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5a280006fb7dc51428884d5b068b8544"></script>
+        <!-- skchoi daum id  <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=792f3aa7ce757a66d54ae52a2c22977a"></script> -->
+		<script type="text/javascript" src="./js/newmain.js"></script>
+		<script type="text/javascript" src="./js/seacastjs.js"></script>
+
+    </head>
+    <body>
+	
+		<div class="topMenuFrame2">
+				<div class="topStat2">
+						<div class="topLogo2"><img src=./images/topLogo.png title="광주지방기상청 로고"></div>
+						<div class="topName2"><img src=./images/topName.png title="전복산업 지원을 위한 지역해양기상 융합 서비스"></div>
+						<div class="topMenu2">
+								<a href="./">작업지수 및 날씨</a>
+								<span>|</span> 
+								<a href="./seainfo.html">해상정보</a>
+								<span>|</span> 
+								<a href="./seacast.html">해상예보</a>
+								<span>|</span> 
+								<a href="./pds.html">관측통계정보</a>
+								<span>|</span> 
+								<a href="./intro.html">사업소개</a>
+						</div>
+				</div>
+		</div>
+
+		<div style="text-align:center;background:white; margin-top:93px; margin-bottom:21px;">
+			<img src =./images/topBanner.png style="margin:15px 0 15px 200px;">
+		</div>
+
+
+<div class="forecastframe01">
+		<div class="content" style="height:540px;">
+		
+				<div style="position:fixed; top:69px;">
+							<div class="conMenu" style="background:white;">
+									<img src="./images/conMenuBg.jpg">
+									<ul style="border-top:1px solid #cccccc;">
+										<li class="mover" onClick="location.href='./'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+												<span style="color:black; font-size:14px;">작업지수 및 날씨</span><br>
+												<span style="color:#19abaa; font-size:11px;">Work Index & Weather</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./seainfo.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover mover__ moverbg" onClick="location.href='./seacast.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">해상예보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Maritime Forecast</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./pds.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">관측통계정보</span><br>
+											<span style="color:#19abaa; font-size:11px;">Observation Information</span>
+										</li>
+
+										<li style="padding:0; border-bottom:1px dashed #cccccc; width:150px;"></li>
+
+										<li class="mover" onClick="location.href='./intro.html'" style="display:block; cursor:pointer; line-height:120%; padding:20px 0 15px 10px;">
+											<span style="color:black; font-size:14px;">사업소개</span><br>
+											<span style="color:#19abaa; font-size:11px;">Introduction of Business</span>
+										</li>
+									</ul>
+							</div>
+
+							<ul style="font-size:13px; background:#fff; line-height:180%; margin-top:510px; padding:3px 3px 0 3px; border:1px solid #cccccc;border-radius:7px;">
+								<li style="margin-bottom:5px; border-radius:5px;background:#98b7c5; color:white; font-weight:bold;"><span style="padding:5px 4px 7px 5px;">관측소별 현재 (수온/용존산소)</span></li>
+
+									<li>
+											<table border=0 width=100%>
+												<tr>
+													<td><span class=pointcurr>가 &nbsp; 교</span></td>
+													<td><span id="wth4"></span><span class=unit id=unit7> ℃</span></td>
+													<td><span id="dox4"></span><span class=unit id=unit8> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>금 &nbsp; 일</span></td>
+													<td><span id="wth2"></span><span class=unit id=unit3> ℃</span></td>
+													<td><span id="dox2"></span><span class=unit id=unit4> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr style="letter-spacing:-2px;">노화도</span> </td>
+													<td><span id="wth1"></span><span class=unit id=unit1> ℃</span></td>
+													<td><span id="dox1"></span><span class=unit id=unit2> 미설치</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>동 &nbsp;  백</span> </td>
+													<td><span id="wth7"></span><span class=unit id=unit13> ℃</span></td>
+													<td><span id="dox7"></span><span class=unit id=unit14> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>망 &nbsp; 남</span> </td>
+													<td><span id="wth3"></span><span class=unit id=unit5> ℃</span></td>
+													<td><span id="dox3"></span><span class=unit id=unit6> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>백 &nbsp; 도</span> </td>
+													<td><span id="wth6"></span><span class=unit id=unit11> ℃</span></td>
+													<td><span id="dox6"></span><span class=unit id=unit12> mg/L</span></td>
+												</tr>
+												<tr>
+													<td><span class=pointcurr>일 &nbsp; 정</span> </td>
+													<td><span id="wth8"></span><span class=unit id=unit15> ℃</span></td>
+													<td><span id="dox8"></span><span class=unit id=unit16> 미설치</span></td>
+												</tr>
+
+												<tr>
+													<td><span class=pointcurr>청 &nbsp; 산</span> </td>
+													<td><span id="wth5"></span><span class=unit id=unit9> ℃</span></td>
+													<td><span id="dox5"></span><span class=unit id=unit10> mg/L</span></td>
+												</tr>
+											</table>
+									</li>		
+							</ul>							
+					</div>
+					<div class="conText">
+							<div class="main">
+				    				<div id="contents" class="contents">
+										<li class=conTextTitle style="font-size:14px; margin:0px 0px 10px 0; padding:1px 0 1px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;">
+											<span style="color:#007aff;">MOHID</span> 수온 예상 일기도 
+										</li>
+										<li style="text-align:left; border:0px solid #cccccc;">
+												<script>
+														var currDate = new Date();				//현재날짜
+														var currDate2 = new Date();				//현재날짜
+
+														//document.write("<table border=1 style='vertical-align:top;width:870px; line-height:160%'><tr><td valign=top width=130>");
+														document.write("<table border=0 style='vertical-align:top;width:870px; line-height:170%'><tr><td valign=top style='color:#fff;'>");
+														for(var i=0; i<16; i++)
+														{
+																var cYear = currDate.getFullYear();	//년
+																var cMon = currDate.getMonth()+1;	//월
+																var cDay = currDate.getDate();		//일
+																var cMon2 = currDate.getMonth()+1;	//월
+																var cDay2 = currDate.getDate();		//일
+																var cHours = currDate.getHours();	//시간
+
+																if(cMon<10) { cMon ='0'+cMon 	}
+																if(cDay<10) { cDay ='0'+cDay 	}
+
+																if(cMon2<10) { cMon2 ='0'+cMon2 	}
+																if(cDay2<10) { cDay2 ='0'+cDay2 	}
+																// ppark 수정 나중에 바꿔야함
+																// var today = cYear + '' + cMon + '' + cDay; 
+																var today = '20220522'
+																console.log('today', today);
+
+																var today2 = cMon2 + '월 ' + cDay2 + '일'; 
+
+																if(i==0)	var tmpListCss= "tmpList__ tmpList_sel__";
+																else		var tmpListCss= "tmpList__";
+
+																// ppark TODO: 경로 바꾸어야 함
+																if(0 <= cHours && cHours < 3)			{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "00.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "00.png'\">" + today2 + " 00:00</span> ");	}
+																else if(3 <= cHours && cHours < 6)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "03.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "03.png'\">" + today2 + " 03:00</span> ");	}
+																else if(6 <= cHours && cHours < 9)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "06.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "06.png'\">" + today2 + " 06:00</span> ");	}
+																else if(9 <= cHours && cHours < 12)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "09.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "09.png'\">" + today2 + " 09:00</span> ");	}
+																else if(12 <= cHours && cHours < 15)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/outputWando_temp_" + today + "12.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "12.png'\">" + today2 + " 12:00</span> ");	}
+																else if(15 <= cHours && cHours < 18)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "15.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "15.png'\">" + today2 + " 15:00</span> ");	}
+																else if(18 <= cHours && cHours < 21)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "18.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "18.png'\">" + today2 + " 18:00</span> ");	}
+																else if(21 <= cHours && cHours <= 23)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg.src='./NCL/output/Wando_temp_" + today + "21.png'\" onMouseOver=\"itg.src='./NCL/output/Wando_temp_" + today + "21.png'\">" + today2 + " 21:00</span> ");	}
+
+																if(i==7 || i==15) document.write("<br />");
+																
+
+																//document.write(cHours);
+																currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
+														}
+
+														var cYear3 = currDate2.getFullYear();	//년
+														var cMon3 = currDate2.getMonth()+1;		//월
+														var cDay3 = currDate2.getDate();		//일
+														var cHours3 = currDate2.getHours();		//시간
+
+														if(cMon3<10) { cMon3 ='0'+cMon3 	}
+														if(cDay3<10) { cDay3 ='0'+cDay3 	}
+														var today3 = cYear3 + '' + cMon3 + '' + cDay3;
+
+														if(0 <= cHours3 && cHours3 < 3)			{ imgDate = today3 + "00.png"; }
+														else if(3 <= cHours3 && cHours3 < 6)	{ imgDate = today3 + "03.png"; }
+														else if(6 <= cHours3 && cHours3 < 9)	{ imgDate = today3 + "06.png"; }
+														else if(9 <= cHours3 && cHours3 < 12)	{ imgDate = today3 + "09.png"; }
+														else if(12 <= cHours3 && cHours3 < 15)	{ imgDate = today3 + "12.png"; }
+														else if(15 <= cHours3 && cHours3 < 18)	{ imgDate = today3 + "15.png"; }
+														else if(18 <= cHours3 && cHours3 < 21)	{ imgDate = today3 + "18.png"; }
+														else if(21 <= cHours3 && cHours3 <= 23)	{ imgDate = today3 + "21.png"; }
+
+														document.write("</td></tr><tr><td style='vertical-align:top; text-align:center;'>");
+														document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_temp_" + imgDate + "' name='itg' style='width:800px; border:0px solid whitesmoke;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
+												</script>
+										<li>
+								</div></div></div>
+					</div>
+			</div>
+
+			<div class="frame04" style="background:whitesmoke; padding-bottom:60px;">
+				<div class="frame04_box">
+
+								<li class=conTextTitle style="display:inline-block; font-size:14px;width:100%; margin-top:10px; margin-bottom:10px; border-bottom:2px solid #ffffff; padding-bottom:5px;">
+									<span style="color:#007aff;">MOHID</span> 염분 예상 일기도 
+								</li>
+								<li style="text-align:center; border:0px solid #cccccc;">
+										<script>
+												var currDate = new Date();				//현재날짜
+												var currDate2 = new Date();				//현재날짜
+
+												document.write("<table border=0 style='border:0px solid #cccccc; vertical-align:top;width:870px; line-height:170%'><tr><td valign=top style='color:#fff;font-weight:normal;'>");
+												for(var i=0; i<16; i++)
+												{
+														var cYear = currDate.getFullYear();	//년
+														var cMon = currDate.getMonth()+1;	//월
+														var cDay = currDate.getDate();		//일
+														var cMon2 = currDate.getMonth()+1;	//월
+														var cDay2 = currDate.getDate();		//일
+														var cHours = currDate.getHours();	//시간
+
+														if(cMon<10) { cMon ='0'+cMon 	}
+														if(cDay<10) { cDay ='0'+cDay 	}
+
+														if(cMon2<10) { cMon2 ='0'+cMon2 	}
+														if(cDay2<10) { cDay2 ='0'+cDay2 	}
+
+														// ppark 수정 TODO: 날짜 원래대로 
+														// var today = cYear + '' + cMon + '' + cDay; 
+														var today = '20220522'; 
+
+														var today2 = cMon2 + '월 ' + cDay2 + '일'; 
+
+														if(i==0)	var tmpListCss= "tmpList2__ tmpList_sel2__";
+														else		var tmpListCss= "tmpList2__";
+
+														// ppark 경로수정
+														if(0 <= cHours && cHours < 3)			{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "00.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "00.png'\"> " + today2 + " 00:00</span> ");	}
+														else if(3 <= cHours && cHours < 6)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "03.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "03.png'\"> " + today2 + " 03:00</span> ");	}
+														else if(6 <= cHours && cHours < 9)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "06.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "06.png'\"> " + today2 + " 06:00</span> ");	}
+														else if(9 <= cHours && cHours < 12)		{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "09.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "09.png'\"> " + today2 + " 09:00</span> ");	}
+														else if(12 <= cHours && cHours < 15)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "12.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "12.png'\"> " + today2 + " 12:00</span> ");	}
+														else if(15 <= cHours && cHours < 18)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "15.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "15.png'\"> " + today2 + " 15:00</span> ");	}
+														else if(18 <= cHours && cHours < 21)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "18.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "18.png'\"> " + today2 + " 18:00</span> ");	}
+														else if(21 <= cHours && cHours <= 23)	{	document.write("<span class='" + tmpListCss + "' onClick=\"itg2.src='./NCL/output/Wando_sal_" + today + "21.png'\" onMouseOver=\"itg2.src='./NCL/output/Wando_sal_" + today + "21.png'\"> " + today2 + " 21:00</span> ");	}
+
+														if(i==7 || i==15) document.write("<br />");
+
+														//document.write(cHours);
+														currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
+												}
+
+
+												var cYear3 = currDate2.getFullYear();	//년
+												var cMon3 = currDate2.getMonth()+1;		//월
+												var cDay3 = currDate2.getDate();		//일
+												var cHours3 = currDate2.getHours();		//시간
+
+												if(cMon3<10) { cMon3 ='0'+cMon3 	}
+												if(cDay3<10) { cDay3 ='0'+cDay3 	}
+												var today3 = cYear3 + '' + cMon3 + '' + cDay3;
+
+												if(0 <= cHours3 && cHours3 < 3)			{ imgDate = today3 + "00.png"; }
+												else if(3 <= cHours3 && cHours3 < 6)	{ imgDate = today3 + "03.png"; }
+												else if(6 <= cHours3 && cHours3 < 9)	{ imgDate = today3 + "06.png"; }
+												else if(9 <= cHours3 && cHours3 < 12)	{ imgDate = today3 + "09.png"; }
+												else if(12 <= cHours3 && cHours3 < 15)	{ imgDate = today3 + "12.png"; }
+												else if(15 <= cHours3 && cHours3 < 18)	{ imgDate = today3 + "15.png"; }
+												else if(18 <= cHours3 && cHours3 < 21)	{ imgDate = today3 + "18.png"; }
+												else if(21 <= cHours3 && cHours3 <= 23)	{ imgDate = today3 + "21.png"; }
+
+												document.write("</td></tr><tr><td style='vertical-align:top; text-align:center;'>");
+												document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='border:0px solid whitesmoke; width:800px; margin-top:10px;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
+
+
+										</script>
+										
+								<li>
+   					    </div>
+	</div>
+
+	<div class="frame04">
+				<div class="frame04_box">
+					<li class=conTextTitle style="display:inline-block; font-size:14px;width:100%; margin-top:10px; margin-bottom:10px; padding-bottom:5px;"><span style="color:#007aff;">MOHID</span> 시계열 자료 </li>
+						<div style="margin:0px 0px 20px 0; padding:6px 0 5px 0; border-bottom:1px solid #999999; border-top:1px solid #999999;"> 
+								<li style='float:left; margin-left:0px; margin-right:20px;  font-weight:bold; font-size:14px; color:black;'>지역별 </li> 
+								<li class="MOHIDpoint__ MOHIDpoint_sel__" onclick="goURL('가교')" onMouseover="goURL('가교')" name='가교'>가교</li>
+								<li class="MOHIDpoint__" onclick="goURL('군외')" onMouseover="goURL('군외')" name='군외'>군외</li>
+								<li class="MOHIDpoint__" onclick="goURL('금당')" onMouseover="goURL('금당')" name='금당'>금당</li>
+								<li class="MOHIDpoint__" onclick="goURL('금일')" onMouseover="goURL('금일')" name='금일'>금일</li>
+								<li class="MOHIDpoint__" onclick="goURL('노화도')" onMouseover="goURL('노화도')" name='노화도'>노화도</li>
+								<li class="MOHIDpoint__" onclick="goURL('당목')" onMouseover="goURL('당목')" name='당목'>당목</li>
+								<li class="MOHIDpoint__" onclick="goURL('덕도')" onMouseover="goURL('덕도')" name='덕도'>덕도</li>
+								<li class="MOHIDpoint__" onclick="goURL('동백')" onMouseover="goURL('동백')" name='동백'>동백</li>
+								<li class="MOHIDpoint__" onclick="goURL('망남')" onMouseover="goURL('망남')" name='망남'>망남</li>
+								<li class="MOHIDpoint__" onclick="goURL('백도')" onMouseover="goURL('백도')" name='백도'>백도</li>
+								<li class="MOHIDpoint__" onclick="goURL('보길도')" onMouseover="goURL('보길도')" name='보길도'>보길도</li>
+								<li class="MOHIDpoint__" onclick="goURL('생일도')" onMouseover="goURL('생일도')" name='생일도'>생일도</li>
+								<li class="MOHIDpoint__" onclick="goURL('약산')" onMouseover="goURL('약산')" name='약산'>약산</li>
+								<li class="MOHIDpoint__" onclick="goURL('일정')" onMouseover="goURL('일정')" name='일정'>일정</li>
+								<li class="MOHIDpoint__" onclick="goURL('장도')" onMouseover="goURL('장도')" name='장도'>장도</li>
+								<li class="MOHIDpoint__" onclick="goURL('청산도')" onMouseover="goURL('청산도')" name='청산도'>청산도</li>
+
+						</div>
+							<div id='map' class='map' style='width:868px; height:371px;'></div>
+							<br>
+							<div id='sea_content3' class='sea_content3' style='height:308px; width:868px; border-bottom:0px solid red;'></div>
+							<div id='sea_content4' class='sea_content4' style='height:308px; width:868px; border:0px solid red;'></div>
+					
+
+
+				</div>
+	</div>
+
+
+	<div class=frame06>
+		<div class=frame06_box style="color:#888888; padding-bottom:5px;">
+			<div style="height:48px;">
+				<div style="float:left; border-bottom:1px solid #cccccc; padding-top:7px; padding-bottom:5px;">
+					<img src=./images/addr.jpg title="광주지방기상청 로고">
+				</div>
+				<div style="float:left; letter-spacing:1px; line-height:150%; border-bottom:1px solid #cccccc; padding:8px 0 3px 20px; width:384px; font-size:11px; font-weight:normal;">
+						우. 61113 전라남도 광주광역시 북구 서암대로 71 광주지방기상청<br>
+						Copyright&copy; 2017 KMA. All Rights RESERVED
+				</div>
+				<div style="float:right; background:white; margin-top:5px; padding-top:5px; width:455px; border:1px solid #cccccc; text-align:center">
+						<span><a href="http://www.wando.go.kr/" target=_blank><img src=./images/wandologo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.nifs.go.kr/" target=_blank><img src=./images/nifslogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.jnu.ac.kr/" target=_blank><img src=./images/jnulogo2.png height=22></a></span>
+						<span style="margin-left:15px;"><a href="http://www.khoa.go.kr/" target=_blank><img src=./images/khoalogo2.png height=22></a></span>
+				</div>
+			</div>
+
+			<div style="margin-left:3px; padding:0; display:inline-block;">
+					<span style="color:#888888; font-weight:bold; font-size:12px; padding-right:15px">[ 지역 해양기상 융합 서비스 ]</span>
+					<a href="./" style="font-size:12px; color:#888888; text-decoration:none;">작업지수 및 날씨 </a>
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seainfo.html" style="font-size:12px; color:#888888; text-decoration:none;">해상정보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./seacast" style="font-size:12px; color:#888888; text-decoration:none;">해상예보</a>					
+					<span style="padding:0 7px 0 7px; font-size:7px;"> | </span>					
+					<a href="./pds.html" style="font-size:12px; color:#888888; text-decoration:none;">관측통계정보 </a>					
+					<span style="padding:0 7px 0 7px; font-size:7px; color:#888888; font-size:7px;"> | </span>					
+					<a href="./intro.html" style="font-size:12px; color:#888888; text-decoration:none;">사업소개</a>
+			</div>
+
+		</div>
+	</div>
+
+    </body>
+</html>
+<script type="text/javascript">
+	loadWeathers(null, function(result) {
+        check('고금면');
+    });
+	_openSeaForecast3('가교');
+    _loadMap3();
+		function viewWeather() {
+         var curWeather = abalone_position[pos].currWeather;
+		 console.log('intro.html', curWeather);
+
+                var wth = abalone_position[pos].WTH;
+                var dox = abalone_position[pos].DOX;
+
+				var wth1 = abalone_position['노화읍'].WTH;  //관측지점 : 노화도
+                var dox1 = abalone_position['노화읍'].DOX;
+
+				var wth2 = abalone_position['금일읍'].WTH;  //관측지점 : 금일
+                var dox2 = abalone_position['금일읍'].DOX;
+
+				var wth3 = abalone_position['완도읍'].WTH;  //관측지점 : 망남
+                var dox3 = abalone_position['완도읍'].DOX;
+
+				var wth4 = abalone_position['고금면'].WTH;  //관측지점 : 가교
+                var dox4 = abalone_position['고금면'].DOX;
+
+				var wth5 = abalone_position['청산면'].WTH;  //관측지점 : 청산
+                var dox5 = abalone_position['청산면'].DOX;
+
+				var wth6 = abalone_position['소안면'].WTH;  //관측지점 : 백도
+                var dox6 = abalone_position['소안면'].DOX;
+
+				var wth7 = abalone_position['생일면'].WTH;  //관측지점 : 동백
+                var dox7 = abalone_position['생일면'].DOX;
+
+				var wth8 = abalone_position['일정'].WTH;  //관측지점 : 일정
+				
+
+				///// 일정 /////////////////////////////////////
+					if(wth8 == '0')				
+					{	$("#unit15").text('점검중');	}
+					else
+					{
+						$("#wth8").text('' + wth8 + "");
+						$("#unit15").text(' ℃');
+					}
+
+					$("#unit16").text('미설치');  			
+					
+
+					///// 동백 /////////////////////////////////////
+					if(wth7 == '0')				
+					{	$("#unit13").text('점검중');	}
+					else
+					{
+						$("#wth7").text('' + wth7 + "");
+						$("#unit13").text(' ℃');
+					}
+
+					if(dox7)
+					{	$("#dox7").text('' + dox7 + "");
+						$("#unit14").text(' mg/L');
+					}
+					else
+					{
+						$("#unit14").text('점검중');  			
+					}
+
+					///// 백도 /////////////////////////////////////
+					if(wth6 == '0')				
+					{	$("#unit11").text('점검중');	}
+					else
+					{
+						$("#wth6").text('' + wth6 + "");
+						$("#unit11").text(' ℃');
+					}
+
+					if(dox6)
+					{	$("#dox6").text('' + dox6 + "");
+						$("#unit12").text(' mg/L');
+					}
+					else
+					{	$("#unit12").text('점검중');  	}
+
+					///// 청산 /////////////////////////////////////
+					if(wth5 == '0')				
+					{	$("#unit9").text('점검중');	}
+					else
+					{
+						$("#wth5").text('' + wth5 + "");
+						$("#unit9").text(' ℃');
+					}
+
+					if(dox5)
+					{	$("#dox5").text('' + dox5 + "");
+						$("#unit10").text(' mg/L');
+					}
+					else
+					{	$("#unit10").text('점검중');  	}					
+
+					///// 가교 /////////////////////////////////////
+					if(wth4 == '0')				
+					{	$("#unit7").text('점검중');	}
+					else
+					{
+						$("#wth4").text('' + wth4 + "");
+						$("#unit7").text(' ℃');
+					}
+
+					if(dox4)
+					{	$("#dox4").text('' + dox4 + "");
+						$("#unit8").text(' mg/L');
+					}
+					else
+					{	$("#unit8").text('점검중');  	}
+				
+
+					///// 망남 /////////////////////////////////////
+					if(wth3 == '0')				
+					{	$("#unit5").text('점검중');	}
+					else
+					{
+						$("#wth3").text('' + wth3 + "");
+						$("#unit5").text(' ℃');
+					}
+
+					if(dox3)
+					{	$("#dox3").text('' + dox3 + "");
+						$("#unit6").text(' mg/L');
+					}
+					else
+					{	$("#unit6").text('점검중');  	}
+
+					///// 금일 ///////////////////////////////////////
+					if(wth2 == '0')				
+					{	$("#unit3").text('점검중');	}
+					else
+					{
+						$("#wth2").text('' + wth2 + "");
+						$("#unit3").text(' ℃');
+					}
+
+					if(dox2)					//금일 용존산소
+					{	$("#dox2").text('' + dox2 + "");  			
+						$("#unit4").text(' mg/L');
+					}
+					else
+					{	$("#unit4").text('점검중');  	}
+					
+
+					///// 노화도 ////////////////////////////////////
+					if(wth1 == '0')				
+					{	$("#unit1").text('점검중');	}
+					else
+					{
+						$("#wth1").text('' + wth1 + "");
+						$("#unit1").text(' ℃');
+					}
+
+					if(dox1)
+					{	$("#dox1").text('' + dox1 + "");  			
+						$("#unit2").text(' mg/L');
+					}
+					else
+					{	$("#unit2").text('미설치');  	}
+
+                _updateWSD();
+	}
+	viewWeather();
+</script>
