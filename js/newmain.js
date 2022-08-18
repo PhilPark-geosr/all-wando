@@ -125,8 +125,8 @@ function _extend(source, target){
 function parseNowForecast(xml) {
     var items = null;
     try{
-        // items = xml.documentElement.firstChild.nextSibling.firstChild.children;
-        items = xml.documentElement.childNodes[1].childNodes[1].children;
+        items = xml.documentElement.firstChild.nextSibling.firstChild.children;
+        // items = xml.documentElement.childNodes[1].childNodes[1].children;
         // items = xml.documentElement.childNodes[1].childNodes[1]
     }catch(e){
         return null;
@@ -145,11 +145,8 @@ function parseNowForecast(xml) {
 
             var category = item.children[j].textContent;
             var v = item.getElementsByTagName('obsrValue')[0].textContent;
-			var baseDate = item.getElementsByTagName('baseDate')[0].textContent;
-            // ppark 표출됨
-            // console.log('parseNowForecast', baseDate );
+			var baseDate = item.getElementsByTagName('baseDate')[0].textContent;      
 			var baseTime = item.getElementsByTagName('baseTime')[0].textContent;
-            
             if (category == 'SKY') {
                 curWeather[category] = v;
 				curWeather['baseDate'] = baseDate;
@@ -184,21 +181,17 @@ function parseNowForecast(xml) {
 
 function parseShortForecast(xml) {
     var items = null;
-    // console.log('xml.documentElement', xml.documentElement.childNodes[1].nextSibling);
     try{
-        // items = xml.documentElement.firstChild.nextSibling.firstChild.children;   
-        items = xml.documentElement.childNodes[1].childNodes[1].children;
+        items = xml.documentElement.firstChild.nextSibling.firstChild.children;   
     }catch(e){
         console.log('error',e);
         return null;
     }
-    // console.log('items', items[0]);
+
     var forecast = [];
-    
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
-        // ppark 확인
-        // console.log('item', item);
+    
         for (var j = 0; j < item.children.length; j++) {
             var name = item.children[j].nodeName;
 
@@ -223,8 +216,7 @@ function parseShortForecast(xml) {
                     break;
                 }
             }
-            // ppark 확인
-            // console.log('forecast1', forecast);
+
             if (foundIndex < 0) {
                 var obj = {};
                 obj["fcstDate"] = fcstDate;
@@ -258,8 +250,6 @@ function parseShortForecast(xml) {
             } else {
                 break;
             }
-            // ppark 확인
-            // console.log('forecast2', forecast);
         }
     }
     return forecast;
@@ -430,12 +420,9 @@ function loadNowForecast(pos, callback) {
     var position = abalone_position[pos];
 
     var xhr = new XMLHttpRequest();
-    // var url = 'http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib'; /*URL*/
-    // ppark
-    var url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst';    
-    // var queryParams = '?' + ('ServiceKey=POjNMXE9MZRqbdx%2BQRgwsuuDmuNaF0yeEh8notuOkYME07kxwx%2FR%2FBFqRuHVq63CAuAbkAwHWhffF0PsZGVOYg%3D%3D'); /*Service Key*/
-    var queryParams = '?' + ('ServiceKey=LrXygMrb2AUq%2Blt2uKLv9b7Ogi3Dajn4qf48rZSnu%2Bpf8%2Fkd9BxsAX5zUgSE041bDhjijxkQNx8N%2BI2Eu4pUbQ%3D%3D'); /*Service Key*/
-    
+    var url = 'http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib'; /*URL*/
+    var queryParams = '?' + ('ServiceKey=POjNMXE9MZRqbdx%2BQRgwsuuDmuNaF0yeEh8notuOkYME07kxwx%2FR%2FBFqRuHVq63CAuAbkAwHWhffF0PsZGVOYg%3D%3D'); /*Service Key*/
+ 
 
 
     queryParams += '&' + ('base_date') + '=' + (dateString); /*해상위치(남해서부)*/
@@ -449,7 +436,6 @@ function loadNowForecast(pos, callback) {
     console.log('초단기 url', url + queryParams);
 
     var proxy = "/ocean/AjaxRequest.jsp?url=" + encodeURIComponent(url + queryParams);
-
 	//var proxy = "../AjaxRequest.jsp?url=" + url + queryParams;
 	
 
