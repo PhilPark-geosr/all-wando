@@ -192,7 +192,7 @@ function parseShortForecast(xml) {
         console.log('error',e);
         return null;
     }
-    // console.log('items', items[0]);
+    console.log('items', items[0].children);
     var forecast = [];
     
     for (var i = 0; i < items.length; i++) {
@@ -207,10 +207,12 @@ function parseShortForecast(xml) {
                 continue;
 
             var category = item.children[j].textContent;
+            // console.log('category', category);
             
             var fcstDate =item.getElementsByTagName('fcstDate')[0].textContent;
             var fcstTime =item.getElementsByTagName('fcstTime')[0].textContent;
             var v = item.getElementsByTagName('fcstValue')[0].textContent;
+            // console.log('vsss', v);
 
             var t = fcstDate + "_" + fcstTime;
             
@@ -224,7 +226,7 @@ function parseShortForecast(xml) {
                 }
             }
             // ppark 확인
-            // console.log('forecast1', forecast);
+            console.log('forecast1', forecast);
             if (foundIndex < 0) {
                 var obj = {};
                 obj["fcstDate"] = fcstDate;
@@ -239,7 +241,7 @@ function parseShortForecast(xml) {
                 forecast[foundIndex][category] = v;
             } else if (category == 'PCP' || category == 'RN1') {
                 forecast[foundIndex][category] = v;
-            } else if (category == 'T3H' || category == 'T1H') {
+            } else if (category == 'TMP' || category == 'T1H') {
                 forecast[foundIndex][category] = v;
             } else if (category == 'WAV') {
                 forecast[foundIndex][category] = v;
@@ -295,6 +297,8 @@ function loadForecast(pos, callback){
     });
 }
 
+
+// 동네예보.. getVilageFcst
 function loadShortForecate(pos, callback){
     var curDate = new Date();
     var dateString = curDate.format('yyyyMMdd');
@@ -337,7 +341,6 @@ function loadShortForecate(pos, callback){
             return position.forecast;
     }
     var xhr = new XMLHttpRequest();
-    // var url = 'http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData'; /*URL*/
     var url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'
     // var queryParams = '?' + ('ServiceKey=POjNMXE9MZRqbdx%2BQRgwsuuDmuNaF0yeEh8notuOkYME07kxwx%2FR%2FBFqRuHVq63CAuAbkAwHWhffF0PsZGVOYg%3D%3D'); /*Service Key*/
     var queryParams = '?' + ('ServiceKey=LrXygMrb2AUq%2Blt2uKLv9b7Ogi3Dajn4qf48rZSnu%2Bpf8%2Fkd9BxsAX5zUgSE041bDhjijxkQNx8N%2BI2Eu4pUbQ%3D%3D'); /*Service Key*/
@@ -351,7 +354,7 @@ function loadShortForecate(pos, callback){
     queryParams += '&' + ('pageNo') + '=' + ('1'); /*페이지 번호*/
 
     // ppark
-    // console.log('동네예보 url', url + queryParams);
+    console.log('동네예보 url', url + queryParams);
     var proxy = "/ocean/AjaxRequest.jsp?url=" + encodeURIComponent(url + queryParams);
     
 
@@ -409,6 +412,7 @@ function loadShortForecate(pos, callback){
     xhr.send('');
 }
 
+
 function loadNowForecast(pos, callback) {
 
     var curDate = new Date();
@@ -446,7 +450,7 @@ function loadNowForecast(pos, callback) {
     queryParams += '&' + ('pageNo') + '=' + ('1'); /*페이지 번호*/
 
     // ppark
-    console.log('초단기 url', url + queryParams);
+    // console.log('초단기 url', url + queryParams);
 
     var proxy = "/ocean/AjaxRequest.jsp?url=" + encodeURIComponent(url + queryParams);
 
@@ -1157,13 +1161,15 @@ function calcIndexes(pos, callback){
     
     var values = ["-", "적합", "보통", "주의", "위험"];
 
-    wth = parseFloat(abalone.WTH);				//수온
-    wav = parseFloat(abalone.currWeather.WAV);
-    console.log('PCP', parseFloat(abalone.currWeather));	//파고
+    wth = parseFloat(abalone.WTH);	
+    console.log('wth', wth);		//수온
+    wav = parseFloat(abalone.forecast[0].WAV);
+    // console.log('newmainjs_PCP_currWeather', abalone.forecast[0]);	//파고
     // r06 = parseFloat(abalone.forecast[0].PCP);	//강수량 (6시간)
-    wsd = parseFloat(abalone.currWeather.WSD);  //풍속
+    wsd = parseFloat(abalone.forecast[0].WSD);  //풍속
+    console.log('WSD', wsd);	
     t1h = parseFloat(abalone.currWeather.T1H);	//한시간 기온
-
+    console.log('t1h', t1h);	
 	//20170625 Add 강수량이 6시간 간격이므로 값이 없으면 0으로 셋팅
 	if(!r06) { r06=0; }
 
@@ -1239,6 +1245,7 @@ function calcIndexes(pos, callback){
         av = jp1; 
 
     jp1 = getValue(av);
+    print('전복지수', jp1)
     j1 = getValueName(av);
 	jpp1 = av;
 
@@ -1746,12 +1753,15 @@ function calcIndexes(pos, callback){
     for (var i = 0; i < abalone.forecast.length; i++ ){
 
 		var forecast = abalone.forecast[i];
+        console.log('newmainjs_forecast', forecast);
         wav = parseFloat(forecast.WAV);
         //20170625 강수량은 6시간 예보이므로 중간에 빈 시간은 값이 없어 parseFloat 함수가 오류
 		//r06 = parseFloat(forecast.WAV);  
  		r06 = forecast.R06; 	    
         wsd = parseFloat(forecast.WSD);
-        t1h = parseFloat(forecast.T3H);
+        //20220822 ppark수정 3시간 기온 없음
+        t1h = parseFloat(forecast.TMP);
+        console.log('TMP', t1h);
 		pop = parseFloat(forecast.POP);
 
 		//20170625 Add 강수량이 6시간 간격이므로 값이 없으면 앞시간 값 가져오기

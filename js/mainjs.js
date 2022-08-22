@@ -46,7 +46,7 @@ var pos = '';
 				// var curWeather = abalone_position[pos].currWeather;
 				var curWeather = abalone_position[pos].forecast[0];
 
-				console.log('curWeather', curWeather);
+				console.log('mainjs_curWeather', curWeather);
 				
 				//var curWeather1 = abalone_position['노화읍'].currWeather;
 				//var curWeather2 = abalone_position['금일읍'].currWeather;
@@ -146,8 +146,9 @@ var pos = '';
 					$("#wind_val").text('' + vec2 + "");  	 	//풍향값(한글명칭)
                     $("#wave").text('' + curWeather.WAV + " m");  		//파고
 
-					if (curWeather.RN1==0)	{	$("#rain").text(" - mm"); }		//강수량	
-					else					{	$("#rain").text('' + curWeather.RN1 + " mm"); } 		//강수량
+					// 20220822 ppark수정
+					if (curWeather.PCP=='강수없음')	{	$("#rain").text(" - mm"); }		//강수량	
+					else					{	$("#rain").text('' + curWeather.PCP + " mm"); } 		//강수량
 
                     //$("#rain").text('' + curWeather.RN1 + " mm"); 		//강수량
                     $("#wth").text('' + wth + " ℃");  				//수온
