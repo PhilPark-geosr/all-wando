@@ -260,6 +260,8 @@
 														if(i==7 || i==15) document.write("<br />");
 
 														//document.write(cHours);
+														
+														// ppark 3시간별로 돌면서 기록
 														currDate.setHours(currDate.getHours()+3);		//현재 설정된 값에서 3시간씩 뺌
 												}
 
@@ -283,7 +285,8 @@
 												else if(21 <= cHours3 && cHours3 <= 23)	{ imgDate = today3 + "21.png"; }
 
 												document.write("</td></tr><tr><td style='vertical-align:top; text-align:center;'>");
-												document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='border:0px solid whitesmoke; width:800px; margin-top:10px;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
+												// ppark 수정
+												document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='./NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='border:0px solid whitesmoke; width:800px; margin-top:10px;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
 
 
 										</script>
