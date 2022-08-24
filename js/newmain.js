@@ -3162,7 +3162,7 @@ function _fileDownload(fileName){
 var inforWindows = [];
 
 function makeMarker(map, marker, value) {
-    var infowindow = new daum.maps.InfoWindow({
+    var infowindow = new kakao.maps.InfoWindow({
         //content: "<div class='infoWindow'><div>조사지점: 완도 백도 </div>" +
         //            "<div>조사위치: 126.6269, 34.1636 </div>" +
         //            "<div>지수: 좋음 </div></div>"
@@ -3170,16 +3170,16 @@ function makeMarker(map, marker, value) {
     });
 
     inforWindows.push(infowindow);
-    daum.maps.event.addListener(marker, 'mouseover', function() {
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
           // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
         //infowindow.open(map, marker);
     });
-    daum.maps.event.addListener(marker, 'mouseout', function() {
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
         // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
         //infowindow.close();
     });
 
-    daum.maps.event.addListener(marker, 'click', function () {
+    kakao.maps.event.addListener(marker, 'click', function () {
         // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
         for (var i in inforWindows) {
             var iwin = inforWindows[i];
@@ -3226,7 +3226,7 @@ function makeMarker(map, marker, value) {
 }
 
 function makeMarker2(map, marker, value) {
-    daum.maps.event.addListener(marker, 'click', function () {
+    kakao.maps.event.addListener(marker, 'click', function () {
         // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
         _openSeaForecast(value);
     });
@@ -3236,15 +3236,15 @@ function makeMarker2(map, marker, value) {
 function _loadMap3(){
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
         level: 1 //지도의 레벨(확대, 축소 정도)
     };
     
-    map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    map.setMapTypeId(daum.maps.MapTypeId.HYBRID);
+    map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
     $("#map>div:nth-child(2)").hide();
 
-    var bounds = new daum.maps.LatLngBounds();
+    var bounds = new kakao.maps.LatLngBounds();
 
     var infor = [];
 
@@ -3277,12 +3277,12 @@ function _loadMap3(){
         var position = seaValue[i].split(',');
 		var position2 = seaValue2[i];
 
-        var latLng = new daum.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
+        var latLng = new kakao.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
 
         bounds.extend(latLng);
 
         var content = '<div style="padding:1px 2px 1px 2px; background:white;border-radius:3px;"><li onclick="_openSeaForecast3(\''+i+'\');" style="cursor:pointer; font-size:11px; letter-spacing:-1px;">'  + seaValue2[cnt2]  + '</li></div>';
-        var customOverlay = new daum.maps.CustomOverlay({
+        var customOverlay = new kakao.maps.CustomOverlay({
             position: latLng,
             content: content   
         });
@@ -3304,17 +3304,17 @@ function _loadMap3(){
 function _loadMap2(){
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
         level: 3 //지도의 레벨(확대, 축소 정도)
     };
     
-    map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    map.setMapTypeId(daum.maps.MapTypeId.HYBRID);
+    map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
     $("#map>div:nth-child(2)").hide();
     //완도 노화도 - 126.5549, 34.2193
 
     //완도 백도 - 126.6269, 34.1636
-    var bounds = new daum.maps.LatLngBounds();
+    var bounds = new kakao.maps.LatLngBounds();
     //var latLng = new daum.maps.LatLng(34.2193, 126.5549);
 
     //bounds.extend(latLng);
@@ -3366,12 +3366,12 @@ function _loadMap2(){
 
         var position = seaValue[i].split(',');
 
-        var latLng = new daum.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
+        var latLng = new kakao.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
 
         bounds.extend(latLng);
 
         var content = '<div style="margin-left:-79px;margin-top:-15px;"><img onclick="_openSeaForecast(\''+i+'\');" style="cursor:pointer;" src="/ocean/images/sea' + cnt + '.png" alt="'+cnt+'"></div>';//'<div class ="infoWindow" onclick="_openSeaForecast(\''+i+'\');">'+ i + '</div>';
-        var customOverlay = new daum.maps.CustomOverlay({
+        var customOverlay = new kakao.maps.CustomOverlay({
             position: latLng,
             content: content   
         });
@@ -3398,7 +3398,7 @@ function _loadMap() {
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     console.log('daum1');
     var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
         level: 3 //지도의 레벨(확대, 축소 정도)
     };
     console.log('daum2');
@@ -3413,13 +3413,13 @@ function _loadMap() {
     //    //container.style = 'width:' + (w - 15)+ 'px;height:' + (h - 70) + 'px';
     //    map.relayout();
     //});
-    map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    map.setMapTypeId(daum.maps.MapTypeId.HYBRID);
+    map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
     $("#map>div:nth-child(2)").hide();
     //완도 노화도 - 126.5549, 34.2193
 
     //완도 백도 - 126.6269, 34.1636
-    var bounds = new daum.maps.LatLngBounds();
+    var bounds = new kakao.maps.LatLngBounds();
     //var latLng = new daum.maps.LatLng(34.2193, 126.5549);
 
     //bounds.extend(latLng);
@@ -3473,18 +3473,18 @@ function _loadMap() {
 
         var position = abalone_position[i]['LATLNG'].split(',');
 
-        var latLng = new daum.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
+        var latLng = new kakao.maps.LatLng(parseFloat(position[0]), parseFloat(position[1]));
 
         bounds.extend(latLng);
 
-        var infowindow = new daum.maps.InfoWindow({
+        var infowindow = new kakao.maps.InfoWindow({
             //content: "<div class='infoWindow'><div>조사지점: 완도 백도 </div>" +
             //            "<div>조사위치: 126.6269, 34.1636 </div>" +
             //            "<div>지수: 좋음 </div></div>"
             content: infor[i]
         });
 
-        var marker = new daum.maps.Marker({
+        var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: latLng
         });
