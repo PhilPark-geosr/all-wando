@@ -446,7 +446,7 @@ function loadNowForecast(pos, callback) {
     queryParams += '&' + ('pageNo') + '=' + ('1'); /*페이지 번호*/
 
     // ppark
-    console.log('초단기 url', url + queryParams);
+    // console.log('초단기 url', url + queryParams);
 
     var proxy = "/ocean/AjaxRequest.jsp?url=" + encodeURIComponent(url + queryParams);
 
@@ -461,12 +461,12 @@ function loadNowForecast(pos, callback) {
             if (this.responseXML != null){
                 //  ppark 여기로 안들어옴
                 position.currWeather = _extend(position.currWeather, parseNowForecast(this.responseXML));
-                console.log('초단기 currWeather1', position.currWeather);
+                // console.log('초단기 currWeather1', position.currWeather);
             }
                 
             else {
                 var text = this.responseText.trim();
-                console.log('초단기 text', text);
+                // console.log('초단기 text', text);
 				var xmlDoc = null;
                 try { // code for IE
                     xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
@@ -484,11 +484,11 @@ function loadNowForecast(pos, callback) {
                     }
                 }
                 position.currWeather = _extend(position.currWeather, parseNowForecast(xmlDoc));
-                console.log('초단기 currWeather2', position.currWeather);
+                // console.log('초단기 currWeather2', position.currWeather);
             }
             if (callback ) {
                 callback(position.currWeather == null ? null : pos);
-                console.log('초단기 currWeather3', position.currWeather);
+                // console.log('초단기 currWeather3', position.currWeather);
             }
                 
             else
