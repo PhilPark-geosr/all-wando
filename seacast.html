@@ -9,6 +9,7 @@
         <!-- <script type="text/javascript" src="./js/libs/jquery.xdomain.js"></script> -->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5a280006fb7dc51428884d5b068b8544"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=413e5f757f0ef65fca1188815fe324f2"></script>
         <!-- skchoi daum id  <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=792f3aa7ce757a66d54ae52a2c22977a"></script> -->
 		<script type="text/javascript" src="./js/newmain.js"></script>
 		<script type="text/javascript" src="./js/seacastjs.js"></script>
@@ -283,8 +284,9 @@
 												else if(21 <= cHours3 && cHours3 <= 23)	{ imgDate = today3 + "21.png"; }
 
 												document.write("</td></tr><tr><td style='vertical-align:top; text-align:center;'>");
-												document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='http://210.220.30.133:8080/ocean/NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='border:0px solid whitesmoke; width:800px; margin-top:10px;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
-
+												// ppark 수정
+												document.write("<div style='background:#fff;margin-top:10px;padding:30px 20px;'><img src='./NCL/output/Wando_sal_" + imgDate + "' name='itg2' style='border:0px solid whitesmoke; width:800px; margin-top:10px;' onError=\"this.src='./images/nodata.png'\"></div></td></tr></table>");
+												
 
 										</script>
 										
